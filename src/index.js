@@ -13,7 +13,6 @@ import Footer from './components/Footer';
 // Pages
 import Home from './pages/Home';
 import Animes from './pages/Animes';
-import Mangas from './pages/Mangas';
 import Personagens from './pages/Personagens';
 import AnimeEspecifico from './pages/AnimeEspecifico';
 
@@ -25,7 +24,6 @@ root.render(
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/animes' element={<Animes />} />
-        <Route path='/mangas' element={<Mangas />} />
         <Route path='/personagens' element={<Personagens />} />
         <Route path='/anime' element={<AnimeEspecifico />} />
       </Routes>

@@ -10,4 +10,29 @@
         line-height: 16px;
         color: white;
     }
+
+    &__generos {
+        font-style: normal;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 24px;
+        color: white;
+    }
+
+    &__titles {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        max-width: 700px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__year {
+        font-weight: 800;
+        font-size: 16px;
+        line-height: 24px;
+        color: var(--color-palette-lred);
+    }
 }

@@ -4,12 +4,15 @@
 
 .c-title {
     &__logo {
-        color: var(--color-palette-mred);
-        font-style: normal;
-        font-weight: 800;
-        font-size: 35px;
-        line-height: 52px;
-        animation: tittleSurg 0.7s ease-in-out;
+        a {
+            color: var(--color-palette-mred);
+            font-style: normal;
+            font-weight: 800;
+            font-size: 35px;
+            line-height: 52px;
+            animation: tittleSurg 0.7s ease-in-out;
+            text-decoration: none;
+        }
     }
 
     &__session {
@@ -19,12 +22,24 @@
         margin-bottom: 18px;
         animation: tittleSurg 0.5s ease-in-out;
     }
+    
+    &__animeName {
+        color: white;
+        max-width: 650px;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 75px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
 
 @keyframes tittleSurg {
     0% {
         clip-path: polygon(0 100%, 0 100%, 0 0, 0 0);
-    } 100% {
+    }
+    100% {
         clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
     }
 }

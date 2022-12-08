@@ -47,9 +47,23 @@ class Anime extends Component {
                 .catch((error) => this.getError(error));
 
             if (this.state.status === 'loading') {
+
+                var genres = '';
+                var i = 0;
+
+                responseAn.data.data.genres.map((genre) => {
+                    if (i === 0) {
+                        genres = genres + genre.name;
+                    } else {
+                        genres = genres + ' | ' + genre.name;
+                    }
+                    i++;
+                })
+
                 this.setState({
                     status: 'success',
-                    Anime: responseAn.data.data
+                    Anime: responseAn.data.data,
+                    genres: genres
                 });
             };
         };
@@ -60,12 +74,25 @@ class Anime extends Component {
             return (
                 <>
                     <Banner img={this.state.Anime.images.jpg.large_image_url} />
-                    <Main compClass='__anime'>
+                    <Main compClass='__anime' >
                         <div className='l-latBar' >
                             <img className='c-animeFolder' src={this.state.Anime.images.jpg.large_image_url} alt='img' />
                         </div>
                         <div className='l-sessions' >
-
+                            <div className='c-animeHeader' >
+                                <FlexContainer size='100%' justify='space-between' display='flex'>
+                                    <div>
+                                        <h1 className='c-title__animeName' >{this.state.Anime.title}</h1>
+                                        <p className='c-text__generos' >{this.state.genres}</p>
+                                    </div>
+                                </FlexContainer>
+                            </div>
+                            <div className='c-animeTitles' >
+                                <FlexContainer size='100%' justify='space-between' display='flex'>
+                                    <p className='c-text__titles' >{'Anitory > Anime > ' + this.state.Anime.title}</p>
+                                    <p className='c-text__year' >{this.state.Anime.year !== null ? this.state.Anime.year : ''}</p>
+                                </FlexContainer>
+                            </div>
                         </div>
                     </Main>
                 </>
@@ -86,7 +113,7 @@ class Anime extends Component {
                                 <h1>{this.state.errorCode}</h1>
                                 <p>{this.state.statusText}</p>
                             </div>
-                            <p className='c-errorText'>por favor cheque a url: <Link to={'/'}>http://Anitory.com</Link> </p>
+                            <p className='c-errorText'>por favor cheque a url: <a href={'/'}>http://Anitory.com</a> </p>
                         </FlexContainer>
                     </FlexContainer>
                 </Main>

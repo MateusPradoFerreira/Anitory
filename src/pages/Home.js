@@ -40,6 +40,8 @@ class Home extends Component {
     }
 
     async componentDidMount() {
+        
+        window.scroll(0, 0);
         // Api
         const responseSeason = await Api.get('/seasons/now?limit=8&type=anime')
             .catch((error) => this.getError(error));

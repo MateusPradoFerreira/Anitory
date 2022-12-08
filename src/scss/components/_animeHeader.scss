@@ -1,12 +1,15 @@
 // ================================================================================
-// COMPONENTS
+// ANIME hEADER
 // ================================================================================
 
-.c-animeFolder {
-    width: 300px;
-    height: 430px;
-    object-fit: cover;
-    border-radius: 10px;
+.c-animeHeader {
     position: absolute;
-    margin-bottom: 430px;
+    margin-top: 65px;
+    width: 855px;
+}
+
+.c-animeTitles {
+    margin-top: 240px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #9C9C9C;
 }
