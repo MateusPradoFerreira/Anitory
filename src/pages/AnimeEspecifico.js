@@ -113,7 +113,7 @@ class Anime extends Component {
                                 <h1>{this.state.errorCode}</h1>
                                 <p>{this.state.statusText}</p>
                             </div>
-                            <p className='c-errorText'>por favor cheque a url: <a href={'/'}>http://Anitory.com</a> </p>
+                            <p className='c-errorText'>por favor cheque a url: <a href={'https://anitory.netlify.app/'}>https://anitory.netlify.app/</a> </p>
                         </FlexContainer>
                     </FlexContainer>
                 </Main>
