@@ -22,6 +22,21 @@
         grid-gap: 20px;
         margin-top: 25px;
     }
+
+    &__anime {
+        width: 1200px;
+        min-width: 1200px;
+        margin: 0 auto;
+        min-height: 100vh;
+        height: auto;
+
+        display: grid;
+        grid-template-areas: 'latBar sessions';
+        grid-template-columns: 300px 1fr;
+        grid-gap: 45px;
+        margin-top: -165px;
+        z-index: 1;
+    }
 }
 
 .l-sessions {
