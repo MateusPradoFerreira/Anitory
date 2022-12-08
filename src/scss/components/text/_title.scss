@@ -1,0 +1,30 @@
+// ================================================================================
+// TITLE
+// ================================================================================
+
+.c-title {
+    &__logo {
+        color: var(--color-palette-mred);
+        font-style: normal;
+        font-weight: 800;
+        font-size: 35px;
+        line-height: 52px;
+        animation: tittleSurg 0.7s ease-in-out;
+    }
+
+    &__session {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 25px;
+        margin-bottom: 18px;
+        animation: tittleSurg 0.5s ease-in-out;
+    }
+}
+
+@keyframes tittleSurg {
+    0% {
+        clip-path: polygon(0 100%, 0 100%, 0 0, 0 0);
+    } 100% {
+        clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+    }
+}

@@ -1,0 +1,50 @@
+// ================================================================================
+// GLOBAIS
+// ================================================================================
+
+@import 'global/vars';
+@import 'global/mixins';
+@import 'global/functions';
+
+// ================================================================================
+// LAYOUTS
+// ================================================================================
+
+@import 'layouts/layouts';
+@import 'layouts/header';
+@import 'layouts/footer';
+@import 'layouts/main';
+@import 'layouts/container';
+
+// ================================================================================
+// COMPONENTS
+// ================================================================================
+
+@import 'components/global';
+@import 'components/navBar';
+@import 'components/buttons';
+@import 'components/slider';
+// text
+@import 'components/text/title';
+@import 'components/text/text';
+// card
+@import 'components/cards/cardAnime';
+
+// ================================================================================
+// FONTS
+// ================================================================================
+
+@import 'fonts/fonts';
+
+// ================================================================================
+// DEFINIONS
+// ================================================================================
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Poppins;
+    border: none;
+    outline: none;
+} 

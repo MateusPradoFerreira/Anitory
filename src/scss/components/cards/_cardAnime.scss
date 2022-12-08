@@ -1,0 +1,43 @@
+// ================================================================================
+// CARD ANIME
+// ================================================================================
+
+.c-cardAnime {
+    width: 200px;
+    animation: cardSurg 0.5s ease-in-out;
+
+    &__capa {
+        width: 200px;
+        height: 300px;
+        border-radius: 10px;
+        object-fit: cover;
+    }
+
+    &__name {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 21px;
+        margin-bottom: 15px;
+    }
+
+    &__genres {
+        font-weight: 400;
+        font-size: 11px;
+        line-height: 16px;
+        margin-top: 10px;
+        color: var(--color-palette-bgry);
+    }
+}
+
+@keyframes cardSurg {
+    0% {
+        clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
+    } 100% {
+        clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+    }
+}

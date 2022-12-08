@@ -1,0 +1,50 @@
+// ================================================================================
+// NAV BAR
+// ================================================================================
+
+.c-navBar {
+    display: flex;
+    list-style: none;
+
+    a {
+        text-decoration: none;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 24px;
+        color: rgb(0, 0, 0);
+
+        &:hover {
+            color: var(--color-palette-lred);
+        }
+    }
+
+    &__link {
+        margin: 0 20px;
+    }
+}
+
+.c-navBar2 {
+    display: flex;
+    list-style: none;
+    width: 1200px;
+    display: flex;
+    justify-content: center;
+
+    a {
+        text-decoration: none;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 24px;
+        color: rgb(255, 255, 255);
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__link {
+        margin: 0 20px;
+    }
+}

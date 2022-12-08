@@ -1,0 +1,33 @@
+// ================================================================================
+// MAIN
+// ================================================================================
+
+.l-main {
+    width: 1200px;
+    min-width: 1200px;
+    margin: 0 auto;
+    min-height: 80vh;
+    height: auto;
+
+    &__home {
+        width: 1200px;
+        min-width: 1200px;
+        margin: 0 auto;
+        min-height: 100vh;
+        height: auto;
+
+        display: grid;
+        grid-template-areas: 'sessions latBar';
+        grid-template-columns: 845px 1fr;
+        grid-gap: 20px;
+        margin-top: 25px;
+    }
+}
+
+.l-sessions {
+    grid-area: sessions;
+}
+
+.l-latBar {
+    grid-area: latBar;
+}
