@@ -16,7 +16,7 @@ function CardAnime(props) {
 
     return (
         <div className="c-cardAnime">
-            <Link to={'/anime?animeID=' + props.animeID}>
+            <Link to={'/anime?id=' + props.id}>
                 <img className="c-cardAnime__capa" src={props.capa} alt='capa' />
             </Link>
             <p className="c-cardAnime__genres" >{genres}</p>

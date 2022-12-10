@@ -10,10 +10,7 @@ import Banner from '../components/Banner';
 
 // Axios
 import Api from '../api/Api';
-
-// Router
-import { Link } from 'react-router-dom';
-
+    
 class Anime extends Component {
     constructor(props) {
         super(props);
@@ -38,12 +35,12 @@ class Anime extends Component {
         window.scroll(0, 0);
         var urlAtual = window.location.href;
         var urlClass = new URL(urlAtual);
-        var animeID = urlClass.searchParams.get("animeID");
+        var id = urlClass.searchParams.get("id");
 
-        if (animeID === null) {
+        if (id === null) {
             window.location.href = window.location.href.replace(window.location.pathname, '');
         } else {
-            const responseAn = await Api.get('/anime/' + animeID)
+            const responseAn = await Api.get('/anime/' + id)
                 .catch((error) => this.getError(error));
 
             if (this.state.status === 'loading') {
@@ -75,10 +72,10 @@ class Anime extends Component {
                 <>
                     <Banner img={this.state.Anime.images.jpg.large_image_url} />
                     <Main compClass='__anime' >
-                        <div className='l-latBar' >
+                        <section className='l-latBar' >
                             <img className='c-animeFolder' src={this.state.Anime.images.jpg.large_image_url} alt='img' />
-                        </div>
-                        <div className='l-sessions' >
+                        </section>
+                        <section className='l-sessions' >
                             <div className='c-animeHeader' >
                                 <FlexContainer size='100%' justify='space-between' display='flex'>
                                     <div>
@@ -93,7 +90,7 @@ class Anime extends Component {
                                     <p className='c-text__year' >{this.state.Anime.year !== null ? this.state.Anime.year : ''}</p>
                                 </FlexContainer>
                             </div>
-                        </div>
+                        </section>
                     </Main>
                 </>
             );

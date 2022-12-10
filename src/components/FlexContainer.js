@@ -1,7 +1,8 @@
 function FlexContainer(props) {
     return (
         <div style={{
-            width: props.size,
+            maxWidth: props.size,
+            width: '100%',
             display: props.display,
             justifyContent: props.justify,
             flexWrap: props.wrap,

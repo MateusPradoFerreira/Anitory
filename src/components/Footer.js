@@ -19,7 +19,7 @@ function Footer() {
         <footer className="l-footer">
             <div className="c-redBox">
                 <Container>
-                    <FlexContainer size='1200px' display='flex' justify='center' wrap='wrap'>
+                    <FlexContainer size='100%' display='flex' justify='center' wrap='wrap'>
                         <img className="c-mal" src={MyAnimeList} alt="" />
                         <NavBar itensList={NavBarList} />
                     </FlexContainer>

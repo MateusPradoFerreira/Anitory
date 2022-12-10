@@ -69,8 +69,8 @@
 }
 
 .l-header {
-  width: 1200px;
-  min-width: 1200px;
+  width: 90%;
+  max-width: 1200px;
   height: 80px;
   margin: 0 auto;
   display: -webkit-box;
@@ -108,8 +108,8 @@
 }
 
 .c-toru {
-  width: 1200px;
-  min-width: 1200px;
+  width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -137,22 +137,22 @@
 }
 
 .l-main {
-  width: 1200px;
-  min-width: 1200px;
+  width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
   min-height: 100vh;
   height: auto;
 }
 
 .l-main__home {
-  width: 1200px;
-  min-width: 1200px;
+  width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
   min-height: 100vh;
   height: auto;
   display: -ms-grid;
   display: grid;
-      grid-template-areas: 'sessions latBar';
+      grid-template-areas: "sessions latBar";
   -ms-grid-columns: 845px 1fr;
       grid-template-columns: 845px 1fr;
   grid-gap: 20px;
@@ -160,14 +160,14 @@
 }
 
 .l-main__anime {
-  width: 1200px;
-  min-width: 1200px;
+  width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
   min-height: 100vh;
   height: auto;
   display: -ms-grid;
   display: grid;
-      grid-template-areas: 'latBar sessions';
+      grid-template-areas: "latBar sessions";
   -ms-grid-columns: 300px 855px;
       grid-template-columns: 300px 855px;
   grid-gap: 45px;
@@ -188,8 +188,8 @@
 }
 
 .l-container {
-  width: 1200px;
-  min-width: 1200px;
+  width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
 }
 

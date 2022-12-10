@@ -32,6 +32,7 @@ class Home extends Component {
     }
 
     getError(error) {
+        console.log(error);
         this.setState({
             status: 'error',
             errorCode: error.response.status,
@@ -39,29 +40,31 @@ class Home extends Component {
         })
     }
 
+    criaSession(title, response) {
+        return {
+            title: title,
+            pages: response.data.pagination.last_visible_page,
+            total: response.data.pagination.items.total,
+            animes: response.data.data
+        }
+    }
+
     async componentDidMount() {
-        
+
         window.scroll(0, 0);
         // Api
-        const responseSeason = await Api.get('/seasons/now?limit=8&type=anime')
+        const responseSeason = await Api.get('/seasons/now?limit=4&type=anime')
             .catch((error) => this.getError(error));
-        const responseTopAni = await Api.get('/top/anime?limit=16&type=anime')
+        const responseFilmes = await Api.get('/top/anime?limit=4&type=movie')
+            .catch((error) => this.getError(error));
+        const responseSS2021 = await Api.get('/seasons/2022/winter?limit=16&type=anime')
             .catch((error) => this.getError(error));
 
         if (this.state.status === 'loading') {
             var Animes = [
-                {
-                    title: 'Animes de Temporada',
-                    pages: responseSeason.data.pagination.last_visible_page,
-                    total: responseSeason.data.pagination.items.total,
-                    animes: responseSeason.data.data
-                },
-                {
-                    title: 'Animes mais assistidos',
-                    pages: responseTopAni.data.pagination.last_visible_page,
-                    total: responseTopAni.data.pagination.items.total,
-                    animes: responseTopAni.data.data
-                }
+                this.criaSession('Animes de Temporada', responseSeason),
+                this.criaSession('Filmes mais assistidos', responseFilmes),
+                this.criaSession('Animes condecorados em 2022', responseSS2021)
             ];
 
             this.setState({
@@ -82,9 +85,9 @@ class Home extends Component {
                 <>
                     <Slider />
                     <Main compClass='__home'>
-                        <div className='l-sessions' >
+                        <section className='l-sessions' >
                             {this.state.Animes.map((session) => (
-                                <section key={session.title}>
+                                <div key={session.title}>
                                     <FlexContainer size='100%' display='flex' justify='space-between'>
                                         <h1 className='c-title__session'>{session.title}</h1>
                                         <Button4x4 activeFunction={this.teste} icon={SVGAdd} />
@@ -93,19 +96,19 @@ class Home extends Component {
                                         {session.animes.map((anime) => (
                                             <CardAnime
                                                 key={anime.title}
-                                                animeID={anime.mal_id}
+                                                id={anime.mal_id}
                                                 capa={anime.images.jpg.image_url}
                                                 name={anime.title}
                                                 genres={anime.genres}
                                             />
                                         ))}
                                     </FlexContainer> <br />
-                                </section>
+                                </div>
                             ))}
-                        </div>
-                        <div className='l-latBar' >
+                        </section>
+                        <section className='l-latBar' >
 
-                        </div>
+                        </section>
                     </Main>
                 </>
             );

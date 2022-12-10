@@ -20,23 +20,13 @@ function Header() {
         console.log('teste')
     };
 
-    var ex = false;
-
-    function exibirInput() {
-        if (ex == false) {
-            ex = true;
-        } else {
-            ex = false;
-        }
-    }
-
     return (
         <header className="l-header">
             <h1 className="c-title__logo"> <Link to='/'>Anitory</Link> </h1>
             <NavBar itensList={NavBarList} />
-            <FlexContainer size='180px' display='flex' justify='right' gap='20px'>
+            <FlexContainer size='135px' display='flex' justify='right' gap='20px'>
                 <Button4x4 activeFunction={teste} icon={SVGRandom} />
-                <Button4x4 activeFunction={exibirInput} icon={SVGSearch} />
+                <Button4x4 activeFunction={teste} icon={SVGSearch} />
             </FlexContainer>
         </header>
     );
