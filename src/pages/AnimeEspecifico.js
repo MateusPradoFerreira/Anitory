@@ -10,7 +10,7 @@ import Banner from '../components/Banner';
 
 // Axios
 import Api from '../api/Api';
-    
+
 class Anime extends Component {
     constructor(props) {
         super(props);
@@ -31,6 +31,20 @@ class Anime extends Component {
         })
     }
 
+    concatenarGeneros(genresList) {
+        var genres = '';
+        var i = 0;
+        genresList.map((genre) => {
+            if (i === 0) {
+                genres = genres + genre.name;
+            } else {
+                genres = genres + ' | ' + genre.name;
+            }
+            i++;
+        });
+        return genres;
+    }
+
     async componentDidMount() {
         window.scroll(0, 0);
         var urlAtual = window.location.href;
@@ -44,23 +58,10 @@ class Anime extends Component {
                 .catch((error) => this.getError(error));
 
             if (this.state.status === 'loading') {
-
-                var genres = '';
-                var i = 0;
-
-                responseAn.data.data.genres.map((genre) => {
-                    if (i === 0) {
-                        genres = genres + genre.name;
-                    } else {
-                        genres = genres + ' | ' + genre.name;
-                    }
-                    i++;
-                })
-
                 this.setState({
                     status: 'success',
                     Anime: responseAn.data.data,
-                    genres: genres
+                    genres: this.concatenarGeneros(responseAn.data.data.genres)
                 });
             };
         };

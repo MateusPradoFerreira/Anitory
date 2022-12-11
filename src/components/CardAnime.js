@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 function CardAnime(props) {
 
-    var genres = ''; 
+    var genres = '';
     var i = 0;
-    
+
     props.genres.map((genre) => {
         if (i === 0) {
             genres = genres + genre.name;
@@ -13,6 +13,10 @@ function CardAnime(props) {
         }
         i++;
     })
+
+    if (genres === '') {
+        genres = 'Gênero indefinido'
+    }
 
     return (
         <div className="c-cardAnime">

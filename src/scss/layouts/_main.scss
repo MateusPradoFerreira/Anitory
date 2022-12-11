@@ -23,6 +23,21 @@
         margin-top: 25px;
     }
 
+    &__search {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        min-height: 100vh;
+        height: auto;
+
+        display: grid;
+        grid-template-areas: "filter filter" "sessions latBar";
+        grid-template-rows: 35px 1fr;
+        grid-template-columns: 845px 1fr;
+        grid-gap: 20px;
+        margin-top: 25px;
+    }
+
     &__anime {
         width: 90%;
         max-width: 1200px;
@@ -45,4 +60,8 @@
 
 .l-latBar {
     grid-area: latBar;
+}
+
+.l-filter {
+    grid-area: filter;
 }

@@ -3,6 +3,7 @@ function FlexContainer(props) {
         <div style={{
             maxWidth: props.size,
             width: '100%',
+            minHeight: props.height,
             display: props.display,
             justifyContent: props.justify,
             flexWrap: props.wrap,

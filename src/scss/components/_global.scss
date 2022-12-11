@@ -10,3 +10,38 @@
     position: absolute;
     margin-bottom: 430px;
 }
+
+.c-input {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    border-radius: 10px;
+    height: 35px;
+    border: 3px solid var(--color-palette-lred);
+
+    input {
+        width: 80%;
+        height: 100%;
+        font-size: 11px;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+        border: 1px solid white;
+        -webkit-text-fill-color: black !important;
+        -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+
+    button {
+        background-color: white;
+    }
+}

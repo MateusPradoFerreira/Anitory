@@ -159,6 +159,23 @@
   margin-top: 25px;
 }
 
+.l-main__search {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
+  height: auto;
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "filter filter" "sessions latBar";
+  -ms-grid-rows: 35px 1fr;
+      grid-template-rows: 35px 1fr;
+  -ms-grid-columns: 845px 1fr;
+      grid-template-columns: 845px 1fr;
+  grid-gap: 20px;
+  margin-top: 25px;
+}
+
 .l-main__anime {
   width: 90%;
   max-width: 1200px;
@@ -187,6 +204,13 @@
   grid-area: latBar;
 }
 
+.l-filter {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: filter;
+}
+
 .l-container {
   width: 90%;
   max-width: 1200px;
@@ -201,6 +225,48 @@
   border-radius: 10px;
   position: absolute;
   margin-bottom: 430px;
+}
+
+.c-input {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 20px;
+  border-radius: 10px;
+  height: 35px;
+  border: 3px solid var(--color-palette-lred);
+}
+
+.c-input input {
+  width: 80%;
+  height: 100%;
+  font-size: 11px;
+}
+
+.c-input input:-webkit-autofill,
+.c-input input:-webkit-autofill:hover,
+.c-input input:-webkit-autofill:focus,
+.c-input textarea:-webkit-autofill,
+.c-input textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+.c-input select:-webkit-autofill,
+.c-input select:-webkit-autofill:hover,
+.c-input select:-webkit-autofill:focus {
+  border: 1px solid white;
+  -webkit-text-fill-color: black !important;
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.c-input button {
+  background-color: white;
 }
 
 .c-navBar {
