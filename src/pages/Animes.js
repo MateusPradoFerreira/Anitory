@@ -2,12 +2,12 @@ import { Component } from 'react';
 
 // Img
 import tohruSad from '../img/tohruSad.png';
-import SVGsearch from '../Svg/All/broken/search-normal-1.svg';
 
 // Components
 import Main from '../components/Main';
 import FlexContainer from '../components/FlexContainer';
 import CardAnime from '../components/CardAnime';
+import SearchBar from '../components/SearchBar';
 
 // Axios
 import Api from '../api/Api';
@@ -58,7 +58,7 @@ class Home extends Component {
         var url = '/seasons/now?limit=24&type=anime&sfw=true';
         // Api
         if (busca !== '') {
-            url = '/anime?limit=24&sfw=true&q=' + busca + '&page=' + page;
+            url = '/anime?limit=24&sfw=true&order_by=score&q=' + busca + '&page=' + page;
         }
         const reponse = await Api.get(url)
             .catch((error) => this.getError(error));
@@ -78,14 +78,7 @@ class Home extends Component {
             return (
                 <Main compClass='__search'>
                     <section className='l-filter'>
-                        <form>
-                            <div className='c-input'>
-                                <input type='text' id='input' placeholder='Busque pelos seus animes favoritos' />
-                                <button type='submit' onClick={(e) => this.buscar(e, 1)}>
-                                    <img src={SVGsearch} alt='ssv' />
-                                </button>
-                            </div>
-                        </form>
+                        <SearchBar buscar={this.buscar} />
                     </section>
                     {this.state.Animes.length == 0 ? <section className='l-sessions' >Sem resultados para a sua busca!</section> : ''}
                     <section className='l-sessions' >

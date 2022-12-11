@@ -227,48 +227,6 @@
   margin-bottom: 430px;
 }
 
-.c-input {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 0 20px;
-  border-radius: 10px;
-  height: 35px;
-  border: 3px solid var(--color-palette-lred);
-}
-
-.c-input input {
-  width: 80%;
-  height: 100%;
-  font-size: 11px;
-}
-
-.c-input input:-webkit-autofill,
-.c-input input:-webkit-autofill:hover,
-.c-input input:-webkit-autofill:focus,
-.c-input textarea:-webkit-autofill,
-.c-input textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
-.c-input select:-webkit-autofill,
-.c-input select:-webkit-autofill:hover,
-.c-input select:-webkit-autofill:focus {
-  border: 1px solid white;
-  -webkit-text-fill-color: black !important;
-  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
-  -webkit-transition: background-color 5000s ease-in-out 0s;
-  transition: background-color 5000s ease-in-out 0s;
-}
-
-.c-input button {
-  background-color: white;
-}
-
 .c-navBar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -481,6 +439,56 @@
   margin-top: 240px;
   padding-bottom: 10px;
   border-bottom: 2px solid #9C9C9C;
+}
+
+.c-searchBar {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 20px;
+  border-radius: 10px;
+  height: 35px;
+  border: 3px solid var(--color-palette-lred);
+}
+
+.c-searchBar input {
+  width: 80%;
+  height: 100%;
+  font-size: 11px;
+}
+
+.c-searchBar input:-webkit-autofill,
+.c-searchBar input:-webkit-autofill:hover,
+.c-searchBar input:-webkit-autofill:focus,
+.c-searchBar textarea:-webkit-autofill,
+.c-searchBar textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+.c-searchBar select:-webkit-autofill,
+.c-searchBar select:-webkit-autofill:hover,
+.c-searchBar select:-webkit-autofill:focus {
+  border: 1px solid white;
+  -webkit-text-fill-color: black !important;
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.c-searchBar button {
+  background-color: white;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.c-searchBar button img {
+  width: 16px;
+  height: 16px;
 }
 
 .c-title__logo a {
