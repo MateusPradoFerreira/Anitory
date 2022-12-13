@@ -8,7 +8,7 @@ import Main from '../components/layouts/Main';
 import FlexContainer from '../containers/FlexContainer';
 import CardAnime from '../components/CardAnime';
 import SearchBar from '../components/SearchBar';
-import Pagination from '../components/pagination/Pagination';
+import Pagination from '../components/Pagination';
 
 // Axios
 import Api from '../api/Api';
@@ -52,14 +52,25 @@ class Home extends Component {
 
     async componentDidMount() {
         window.scroll(0, 0);
-        this.buscar(false, '', 1);
+        var urlClass = new URL(window.location.href);
+        var search = urlClass.searchParams.get("search");
+        this.buscar(false, search === null ? '' : search, 1);
     }
 
     async buscar(event, search, page) {
         window.scroll(0, 0);
         if (event !== false) { event.preventDefault(); }
+
+        var urlClass = new URL(window.location.href);
+        var temp = urlClass.searchParams.get("temp");
+
+        var url = search !== '' ? '/anime' : '/top/anime';
+        if ( temp !== null && search === '') {
+            var url = '/' + temp;
+        }
+
         // Api
-        const response = await this.getFetch(search !== '' ? '/anime' : '/seasons/now', {
+        const response = await this.getFetch(url , {
             limit: 24,
             type: 'anime',
             sfw: true,
@@ -67,8 +78,6 @@ class Home extends Component {
             q: search,
             page: page
         });
-
-        console.log(response.data.pagination)
 
         this.setState({
             status: 'success',
@@ -87,7 +96,7 @@ class Home extends Component {
                     </section>
                     {this.state.Animes.length === 0 ? <section className='l-sessions' >Sem resultados para a sua busca!</section> : ''}
                     <section className='l-sessions' >
-                        <FlexContainer display='flex' size='100%' wrap='wrap' justify='space-between' height='80vh'>
+                        <FlexContainer display='flex' size='100%' wrap='wrap' justify='left' height='80vh' gap='15px'>
                             {this.state.Animes.map((anime) => (
                                 <CardAnime
                                     key={anime.title}
@@ -103,7 +112,7 @@ class Home extends Component {
                             pageSize={this.state.Pagination.items.per_page}
                             onPageChange={this.buscar}
                             currentPage={this.state.Pagination.current_page}
-                            siblingCount={''}
+                            siblingCount={7}
                             search={this.state.Search}
                         />
                     </section>

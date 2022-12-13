@@ -492,6 +492,50 @@
   height: 16px;
 }
 
+.c-pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 25px;
+}
+
+.c-pagination__BTon {
+  width: 30px;
+  min-width: 30px;
+  height: 30px;
+  min-height: 30px;
+  border: 2px solid #f44336;
+  border-radius: 10px;
+  background-color: var(--color-palette-lred);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 24px;
+  color: white;
+  padding-top: 1px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.c-pagination__BToff {
+  width: 30px;
+  min-width: 30px;
+  height: 30px;
+  min-height: 30px;
+  border: 3px solid #f44336;
+  border-radius: 10px;
+  background-color: white;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 24px;
+  color: var(--color-palette-lred);
+  padding-top: 1px;
+  cursor: pointer;
+  margin: 5px;
+}
+
 .c-title__logo a {
   color: var(--color-palette-mred);
   font-style: normal;

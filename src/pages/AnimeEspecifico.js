@@ -140,24 +140,27 @@ class Anime extends Component {
                             </>
 
                             <div>
-                                <button type='button' onClick={() => this.setView('episodes')} >episodes</button> <br />
-                                <button type='button' onClick={() => this.setView('characters')} >characters</button> <br />
+                                <button type='button' onClick={() => this.setView('episodes')} >episodes</button>
+                                <button type='button' onClick={() => this.setView('characters')} >characters</button>
                                 <button type='button' onClick={() => this.setView('reviews')} >reviews</button>
                             </div>
 
                             {this.state.View === 'episodes' ? <div>
+                                <h2 className='c-title__subTitle'>Episodios</h2>
                                 {this.state.ViewData.map((episode) => (
                                     <p>episode = {episode.title}</p>
                                 ))}
                             </div> : ''}
 
                             {this.state.View === 'characters' ? <div>
+                                <h2 className='c-title__subTitle'>Personagens</h2>
                                 {this.state.ViewData.map((character) => (
                                     <p>character = {character.character.name}</p>
                                 ))}
                             </div> : ''}
 
                             {this.state.View === 'reviews' ? <div>
+                                <h2 className='c-title__subTitle'>Reviews</h2>
                                 {this.state.ViewData.map((review) => (
                                     <p>review = {review.user.username}</p>
                                 ))}

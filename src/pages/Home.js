@@ -52,27 +52,32 @@ class Home extends Component {
         return response;
     }
 
-    criaSession(title, response) {
+    criaSession(title, response, temp) {
         return {
             title: title,
             pages: response.data.pagination.last_visible_page,
             total: response.data.pagination.items.total,
-            animes: response.data.data
+            animes: response.data.data,
+            temp: temp
         }
+    }
+
+    chamaSession(temp) {
+        window.location.href = '/animes?temp=' + temp
     }
 
     async componentDidMount() {
         window.scroll(0, 0);
         // Api
         const responseSeason = await this.getFetch('/seasons/now', { limit: 4, type: 'anime' });
-        const responseFilmes = await this.getFetch('/top/anime', { limit: 4, type: 'movie' });
+        const responseFilmes = await this.getFetch('/top/anime', { limit: 4, type: 'anime' });
         const responseSS2021 = await this.getFetch('/seasons/2022/winter', { limit: 16, type: 'anime' });
 
         if (this.state.status === 'loading') {
             var Animes = [
-                this.criaSession('Animes de Temporada', responseSeason),
-                this.criaSession('Filmes mais assistidos', responseFilmes),
-                this.criaSession('Animes condecorados em 2022', responseSS2021)
+                this.criaSession('Animes de Temporada', responseSeason, 'seasons/now'),
+                this.criaSession('Animes mais assistidos', responseFilmes, 'top/anime'),
+                this.criaSession('Animes condecorados em 2022', responseSS2021, 'seasons/2022/winter')
             ];
 
             this.setState({
@@ -80,10 +85,6 @@ class Home extends Component {
                 Animes: Animes
             })
         }
-
-    }
-
-    teste() {
 
     }
 
@@ -98,9 +99,9 @@ class Home extends Component {
                                 <div key={session.title}>
                                     <FlexContainer size='100%' display='flex' justify='space-between'>
                                         <h1 className='c-title__session'>{session.title}</h1>
-                                        <Button4x4 activeFunction={this.teste} icon={SVGAdd} />
+                                        <Button4x4 activeFunction={() => this.chamaSession(session.temp)} icon={SVGAdd} />
                                     </FlexContainer>
-                                    <FlexContainer display='flex' size='100%' wrap='wrap' justify='space-between'>
+                                    <FlexContainer display='flex' size='100%' wrap='wrap' justify='left'  gap='15px'>
                                         {session.animes.map((anime) => (
                                             <CardAnime key={anime.title} id={anime.mal_id} capa={anime.images.jpg.image_url} name={anime.title} genres={anime.genres} />
                                         ))}
