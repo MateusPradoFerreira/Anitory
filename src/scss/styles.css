@@ -480,14 +480,14 @@
   transition: background-color 5000s ease-in-out 0s;
 }
 
-.c-searchBar button {
+.c-searchBar__button {
   background-color: white;
   width: 16px;
   height: 16px;
   cursor: pointer;
 }
 
-.c-searchBar button img {
+.c-searchBar__button img {
   width: 16px;
   height: 16px;
 }

@@ -8,6 +8,7 @@ import Main from '../components/layouts/Main';
 import FlexContainer from '../containers/FlexContainer';
 import CardAnime from '../components/CardAnime';
 import SearchBar from '../components/SearchBar';
+import Pagination from '../components/pagination/Pagination';
 
 // Axios
 import Api from '../api/Api';
@@ -26,14 +27,7 @@ class Home extends Component {
 
     state = {
         status: 'loading',
-        Animes: {},
-        pagination: {
-            totalCount: '',
-            currentPage: '',
-            pageSize: '',
-            onPageChange: '',
-            siblingCount : ''
-        }
+        Animes: {}
     }
 
     getError(error) {
@@ -57,35 +51,15 @@ class Home extends Component {
     }
 
     async componentDidMount() {
-
         window.scroll(0, 0);
-        // Api
-        const response = await this.getFetch('/seasons/now', {
-            limit: 24,
-            type: 'anime'
-        });
-
-        if (this.state.status === 'loading') {
-            this.setState({
-                status: 'success',
-                Animes: response.data.data,
-                pagination: {
-                    totalCount: '',
-                    currentPage: '',
-                    pageSize: '',
-                    onPageChange: '',
-                    siblingCount : ''
-                }
-            })
-        }
+        this.buscar(false, '', 1);
     }
 
-    async buscar(e, page) {
-        e.preventDefault();
-        // URL
-        var search = document.getElementById('input').value;
+    async buscar(event, search, page) {
+        window.scroll(0, 0);
+        if (event !== false) { event.preventDefault(); }
         // Api
-        const response = await this.getFetch( search !== '' ? '/anime' : '/seasons/now', {
+        const response = await this.getFetch(search !== '' ? '/anime' : '/seasons/now', {
             limit: 24,
             type: 'anime',
             sfw: true,
@@ -94,16 +68,13 @@ class Home extends Component {
             page: page
         });
 
+        console.log(response.data.pagination)
+
         this.setState({
             status: 'success',
+            Search: search,
             Animes: response.data.data,
-            pagination: {
-                totalCount: '',
-                currentPage: '',
-                pageSize: '',
-                onPageChange: '',
-                siblingCount : ''
-            }
+            Pagination: response.data.pagination
         });
     }
 
@@ -127,6 +98,14 @@ class Home extends Component {
                                 />
                             ))}
                         </FlexContainer>
+                        <Pagination
+                            totalCount={this.state.Pagination.items.total}
+                            pageSize={this.state.Pagination.items.per_page}
+                            onPageChange={this.buscar}
+                            currentPage={this.state.Pagination.current_page}
+                            siblingCount={''}
+                            search={this.state.Search}
+                        />
                     </section>
                     <section className='l-latBar' >
 

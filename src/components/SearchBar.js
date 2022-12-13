@@ -6,7 +6,7 @@ function SearchBar(props) {
         <form>
             <div className='c-searchBar'>
                 <input type='text' id='input' placeholder='Busque pelos seus animes favoritos' />
-                <button type='submit' onClick={(e) => props.buscar(e, 1)}>
+                <button className='c-searchBar__button' type='submit' onClick={(e) => props.buscar(e, document.getElementById('input').value, 1)}>
                     <img src={SVGsearch} alt='ssv' />
                 </button>
             </div>
