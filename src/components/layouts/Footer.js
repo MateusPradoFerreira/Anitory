@@ -1,11 +1,11 @@
 // Components
-import Container from "./Container";
-import FlexContainer from "./FlexContainer";
-import NavBar from "./NavBar2";
+import Container from "../../containers/Container";
+import FlexContainer from "../../containers/FlexContainer";
+import NavBar from "../NavBar2";
 
 // img
-import Toru from '../img/toru.png';
-import MyAnimeList from '../img/MyAnimeList.png';
+import Toru from '../../img/toru.png';
+import MyAnimeList from '../../img/MyAnimeList.png';
 
 function Footer() {
 

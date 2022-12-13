@@ -4,8 +4,8 @@ import { Component } from 'react';
 import tohruSad from '../img/tohruSad.png';
 
 // Components
-import Main from '../components/Main';
-import FlexContainer from '../components/FlexContainer';
+import Main from '../components/layouts/Main';
+import FlexContainer from '../containers/FlexContainer';
 import CardAnime from '../components/CardAnime';
 import SearchBar from '../components/SearchBar';
 
@@ -20,6 +20,7 @@ class Home extends Component {
         super(props);
         this.componentDidMount = this.componentDidMount.bind(this);
         this.getError = this.getError.bind(this);
+        this.getFetch = this.getFetch.bind(this);
         this.buscar = this.buscar.bind(this);
     }
 
@@ -37,40 +38,52 @@ class Home extends Component {
         })
     }
 
+    async getFetch(url, parameters) {
+        var prmts = '?';
+        for (const [key, value] of Object.entries(parameters)) {
+            prmts = prmts + '&' + key + '=' + value;
+        }
+
+        var completeUrl = url + prmts;
+        const response = await Api.get(completeUrl).catch((error) => this.getError(error));
+        return response;
+    }
+
     async componentDidMount() {
 
         window.scroll(0, 0);
         // Api
-        const responseSeason = await Api.get('/seasons/now?limit=24&type=anime')
-            .catch((error) => this.getError(error));
+        const response = await this.getFetch('/seasons/now', {
+            limit: 24,
+            type: 'anime'
+        });
 
         if (this.state.status === 'loading') {
             this.setState({
                 status: 'success',
-                Animes: responseSeason.data.data
+                Animes: response.data.data
             })
         }
     }
 
     async buscar(e, page) {
         e.preventDefault();
-        var busca = document.getElementById('input').value;
-        var url = '/seasons/now?limit=24&type=anime&sfw=true';
+        // URL
+        var search = document.getElementById('input').value;
         // Api
-        if (busca !== '') {
-            url = '/anime?limit=24&sfw=true&order_by=score&q=' + busca + '&page=' + page;
-        }
-        const reponse = await Api.get(url)
-            .catch((error) => this.getError(error));
+        const response = await this.getFetch( search !== '' ? '/anime' : '/seasons/now', {
+            limit: 24,
+            type: 'anime',
+            sfw: true,
+            order_by: 'end_date',
+            q: search,
+            page: page
+        });
 
         this.setState({
             status: 'success',
-            Animes: reponse.data.data
+            Animes: response.data.data
         });
-    }
-
-    teste() {
-
     }
 
     render() {
@@ -80,7 +93,7 @@ class Home extends Component {
                     <section className='l-filter'>
                         <SearchBar buscar={this.buscar} />
                     </section>
-                    {this.state.Animes.length == 0 ? <section className='l-sessions' >Sem resultados para a sua busca!</section> : ''}
+                    {this.state.Animes.length === 0 ? <section className='l-sessions' >Sem resultados para a sua busca!</section> : ''}
                     <section className='l-sessions' >
                         <FlexContainer display='flex' size='100%' wrap='wrap' justify='space-between' height='80vh'>
                             {this.state.Animes.map((anime) => (

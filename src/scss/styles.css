@@ -452,7 +452,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0 20px;
+  padding: 0 10px;
   border-radius: 10px;
   height: 35px;
   border: 3px solid var(--color-palette-lred);
@@ -609,6 +609,9 @@
   line-height: 16px;
   margin-top: 10px;
   color: var(--color-palette-bgry);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @-webkit-keyframes cardSurg {

@@ -31,6 +31,9 @@
         line-height: 16px;
         margin-top: 10px;
         color: var(--color-palette-bgry);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 

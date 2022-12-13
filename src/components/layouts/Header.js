@@ -1,11 +1,11 @@
 // Components
-import NavBar from "./NavBar";
-import FlexContainer from "./FlexContainer";
-import Button4x4 from "./Button4x4";
+import NavBar from "../NavBar";
+import FlexContainer from "../../containers/FlexContainer";
+import Button4x4 from "../Button4x4";
 
 // svg
-import SVGSearch from '../Svg/All/broken/search-normal-1.svg';
-import SVGRandom from '../Svg/All/broken/arrange-circle-2.svg';
+import SVGSearch from '../../Svg/All/broken/search-normal-1.svg';
+import SVGRandom from '../../Svg/All/broken/arrange-circle-2.svg';
 import { Link } from "react-router-dom";
 
 function Header() {

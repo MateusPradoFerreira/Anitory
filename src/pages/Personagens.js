@@ -1,5 +1,5 @@
 // Components
-import Main from '../components/Main';
+import Main from '../components/layouts/Main';
 
 function Personagens() {
     return (

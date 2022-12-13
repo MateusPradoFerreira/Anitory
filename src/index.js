@@ -7,8 +7,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './scss/styles.css';
 
 // Components
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Header from './components/layouts/Header';
+import Footer from './components/layouts/Footer';
 
 // Pages
 import Home from './pages/Home';
@@ -25,7 +25,7 @@ root.render(
         <Route path='/' element={<Home />} />
         <Route path='/animes' element={<Animes />} />
         <Route path='/personagens' element={<Personagens />} />
-        <Route path='/anime' element={<AnimeEspecifico />} />
+        <Route path='/anime' element={<AnimeEspecifico view='episodes' />} />
       </Routes>
       <Footer />
     </Router>

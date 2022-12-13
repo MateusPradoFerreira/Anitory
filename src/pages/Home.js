@@ -7,9 +7,9 @@ import tohruSad from '../img/tohruSad.png';
 import SVGAdd from '../Svg/All/broken/add.svg'
 
 // Components
-import Main from '../components/Main';
+import Main from '../components/layouts/Main';
 import Slider from '../components/Slider';
-import FlexContainer from '../components/FlexContainer';
+import FlexContainer from '../containers/FlexContainer';
 import CardAnime from '../components/CardAnime';
 import Button4x4 from '../components/Button4x4';
 
@@ -24,6 +24,7 @@ class Home extends Component {
         super(props);
         this.componentDidMount = this.componentDidMount.bind(this);
         this.getError = this.getError.bind(this);
+        this.getFetch = this.getFetch.bind(this);
     }
 
     state = {
@@ -40,6 +41,17 @@ class Home extends Component {
         })
     }
 
+    async getFetch(url, parameters) {
+        var prmts = '?';
+        for (const [key, value] of Object.entries(parameters)) {
+            prmts = prmts + '&' + key + '=' + value;
+        }
+
+        var completeUrl = url + prmts;
+        const response = await Api.get(completeUrl).catch((error) => this.getError(error));
+        return response;
+    }
+
     criaSession(title, response) {
         return {
             title: title,
@@ -50,15 +62,11 @@ class Home extends Component {
     }
 
     async componentDidMount() {
-
         window.scroll(0, 0);
         // Api
-        const responseSeason = await Api.get('/seasons/now?limit=4&type=anime')
-            .catch((error) => this.getError(error));
-        const responseFilmes = await Api.get('/top/anime?limit=4&type=movie')
-            .catch((error) => this.getError(error));
-        const responseSS2021 = await Api.get('/seasons/2022/winter?limit=16&type=anime')
-            .catch((error) => this.getError(error));
+        const responseSeason = await this.getFetch('/seasons/now', { limit: 4, type: 'anime' });
+        const responseFilmes = await this.getFetch('/top/anime', { limit: 4, type: 'movie' });
+        const responseSS2021 = await this.getFetch('/seasons/2022/winter', { limit: 16, type: 'anime' });
 
         if (this.state.status === 'loading') {
             var Animes = [
@@ -94,13 +102,7 @@ class Home extends Component {
                                     </FlexContainer>
                                     <FlexContainer display='flex' size='100%' wrap='wrap' justify='space-between'>
                                         {session.animes.map((anime) => (
-                                            <CardAnime
-                                                key={anime.title}
-                                                id={anime.mal_id}
-                                                capa={anime.images.jpg.image_url}
-                                                name={anime.title}
-                                                genres={anime.genres}
-                                            />
+                                            <CardAnime key={anime.title} id={anime.mal_id} capa={anime.images.jpg.image_url} name={anime.title} genres={anime.genres} />
                                         ))}
                                     </FlexContainer> <br />
                                 </div>

@@ -1,11 +1,12 @@
 import { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 // Img
 import tohruSad from '../img/tohruSad.png';
 
 // Components
-import Main from '../components/Main';
-import FlexContainer from '../components/FlexContainer';
+import Main from '../components/layouts/Main';
+import FlexContainer from '../containers/FlexContainer';
 import Banner from '../components/Banner';
 
 // Axios
@@ -16,10 +17,12 @@ class Anime extends Component {
         super(props);
         this.componentDidMount = this.componentDidMount.bind(this);
         this.getError = this.getError.bind(this);
+        this.getFetch = this.getFetch.bind(this);
     }
 
     state = {
         status: 'loading',
+        View: 'episodes',
         Anime: []
     }
 
@@ -45,26 +48,55 @@ class Anime extends Component {
         return genres;
     }
 
+    async getFetch(url, parameters) {
+        var prmts = '?';
+        for (const [key, value] of Object.entries(parameters)) {
+            prmts = prmts + '&' + key + '=' + value;
+        }
+
+        var completeUrl = url + prmts;
+        const response = await Api.get(completeUrl).catch((error) => this.getError(error));
+        return response;
+    }
+
     async componentDidMount() {
         window.scroll(0, 0);
-        var urlAtual = window.location.href;
-        var urlClass = new URL(urlAtual);
+
+        var urlClass = new URL(window.location.href);
         var id = urlClass.searchParams.get("id");
 
         if (id === null) {
             window.location.href = window.location.href.replace(window.location.pathname, '');
         } else {
-            const responseAn = await Api.get('/anime/' + id)
-                .catch((error) => this.getError(error));
+
+            const response = await this.getFetch('/anime/' + id, {});
+            const responseView = await this.getFetch('/anime/' + id + '/' + this.state.View, {});
 
             if (this.state.status === 'loading') {
                 this.setState({
                     status: 'success',
-                    Anime: responseAn.data.data,
-                    genres: this.concatenarGeneros(responseAn.data.data.genres)
+                    Anime: response.data.data,
+                    View: 'episodes',
+                    ViewData: responseView.data.data,
+                    genres: this.concatenarGeneros(response.data.data.genres)
                 });
             };
+
         };
+    }
+
+    async setView(view) {
+        var urlClass = new URL(window.location.href);
+        var id = urlClass.searchParams.get("id");
+        const responseView = await this.getFetch('/anime/' + id + '/' + view, {});
+
+        this.setState({
+            status: 'success',
+            Anime: this.state.Anime,
+            View: view,
+            ViewData: responseView.data.data,
+            genres: this.state.genres
+        });
     }
 
     render() {
@@ -77,20 +109,46 @@ class Anime extends Component {
                             <img className='c-animeFolder' src={this.state.Anime.images.jpg.large_image_url} alt='img' />
                         </section>
                         <section className='l-sessions' >
-                            <div className='c-animeHeader' >
-                                <FlexContainer size='100%' justify='space-between' display='flex'>
-                                    <div>
-                                        <h1 className='c-title__animeName' >{this.state.Anime.title}</h1>
-                                        <p className='c-text__generos' >{this.state.genres}</p>
-                                    </div>
-                                </FlexContainer>
+                            <>
+                                <div className='c-animeHeader' >
+                                    <FlexContainer size='100%' justify='space-between' display='flex'>
+                                        <div>
+                                            <h1 className='c-title__animeName' >{this.state.Anime.title}</h1>
+                                            <p className='c-text__generos' >{this.state.genres}</p>
+                                        </div>
+                                    </FlexContainer>
+                                </div>
+                                <div className='c-animeTitles' >
+                                    <FlexContainer size='100%' justify='space-between' display='flex'>
+                                        <p className='c-text__titles' >{'Anitory > Anime > ' + this.state.Anime.title}</p>
+                                        <p className='c-text__year' >{this.state.Anime.year !== null ? this.state.Anime.year : ''}</p>
+                                    </FlexContainer>
+                                </div>
+                            </>
+
+                            <div>
+                                <button type='button' onClick={() => this.setView('episodes')} >episodes</button> <br />
+                                <button type='button' onClick={() => this.setView('characters')} >characters</button> <br />
+                                <button type='button' onClick={() => this.setView('reviews')} >reviews</button>
                             </div>
-                            <div className='c-animeTitles' >
-                                <FlexContainer size='100%' justify='space-between' display='flex'>
-                                    <p className='c-text__titles' >{'Anitory > Anime > ' + this.state.Anime.title}</p>
-                                    <p className='c-text__year' >{this.state.Anime.year !== null ? this.state.Anime.year : ''}</p>
-                                </FlexContainer>
-                            </div>
+
+                            {this.state.View === 'episodes' ? <div>
+                                {this.state.ViewData.map((episode) => (
+                                    <p>episode = {episode.title}</p>
+                                ))}
+                            </div> : ''}
+
+                            {this.state.View === 'characters' ? <div>
+                                {this.state.ViewData.map((character) => (
+                                    <p>character = {character.character.name}</p>
+                                ))}
+                            </div> : ''}
+
+                            {this.state.View === 'reviews' ? <div>
+                                {this.state.ViewData.map((review) => (
+                                    <p>review = {review.user.username}</p>
+                                ))}
+                            </div> : ''}
                         </section>
                     </Main>
                 </>
