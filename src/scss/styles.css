@@ -28,16 +28,17 @@
 }
 
 :root {
-  --color-palette-lyel: #FFE15D;
-  --color-palette-byel: #F49D1A;
-  --color-palette-lred: #F44336;
-  --color-palette-mred: #DC3535;
-  --color-palette-bred: #B71515;
-  --color-palette-lmag: #D81B60;
-  --color-palette-mmag: #880E4F;
+  --color-palette-lyel: #ffe15d;
+  --color-palette-byel: #f49d1a;
+  --color-palette-lred: #f44336;
+  --color-palette-mred: #dc3535;
+  --color-palette-bred: #b71515;
+  --color-palette-lmag: #d81b60;
+  --color-palette-mmag: #880e4f;
   --color-palette-grey: #a7a7a7;
   --color-palette-bgry: #757575;
   --color-palette-blck: #343434;
+  --color-palette-bdck: #1f1f1f;
 }
 
 :root {
@@ -522,6 +523,14 @@
   text-overflow: ellipsis;
 }
 
+.c-title__subTitle {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 38px;
+  margin-top: 13px;
+}
+
 @-webkit-keyframes tittleSurg {
   0% {
     -webkit-clip-path: polygon(0 100%, 0 100%, 0 0, 0 0);
@@ -575,6 +584,16 @@
   font-size: 16px;
   line-height: 24px;
   color: var(--color-palette-lred);
+}
+
+.c-text__sinopse {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--color-palette-bdbk);
+  margin-top: 18px;
+  margin-bottom: 18px;
 }
 
 .c-cardAnime {

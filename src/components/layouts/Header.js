@@ -16,8 +16,12 @@ function Header() {
         { item: 'Personagens', link: '/personagens' }
     ];
 
-    function teste() {
-        console.log('teste')
+    function random() { 
+        window.location.href = '/anime';
+    };
+
+    function seach() {
+        window.location.href = '/animes';
     };
 
     return (
@@ -25,8 +29,8 @@ function Header() {
             <h1 className="c-title__logo"> <Link to='/'>Anitory</Link> </h1>
             <NavBar itensList={NavBarList} />
             <FlexContainer size='135px' display='flex' justify='right' gap='20px'>
-                <Button4x4 activeFunction={teste} icon={SVGRandom} />
-                <Button4x4 activeFunction={teste} icon={SVGSearch} />
+                <Button4x4 activeFunction={random} icon={SVGRandom} />
+                <Button4x4 activeFunction={seach} icon={SVGSearch} />
             </FlexContainer>
         </header>
     );

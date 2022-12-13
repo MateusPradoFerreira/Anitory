@@ -26,7 +26,14 @@ class Home extends Component {
 
     state = {
         status: 'loading',
-        Animes: {}
+        Animes: {},
+        pagination: {
+            totalCount: '',
+            currentPage: '',
+            pageSize: '',
+            onPageChange: '',
+            siblingCount : ''
+        }
     }
 
     getError(error) {
@@ -61,7 +68,14 @@ class Home extends Component {
         if (this.state.status === 'loading') {
             this.setState({
                 status: 'success',
-                Animes: response.data.data
+                Animes: response.data.data,
+                pagination: {
+                    totalCount: '',
+                    currentPage: '',
+                    pageSize: '',
+                    onPageChange: '',
+                    siblingCount : ''
+                }
             })
         }
     }
@@ -82,7 +96,14 @@ class Home extends Component {
 
         this.setState({
             status: 'success',
-            Animes: response.data.data
+            Animes: response.data.data,
+            pagination: {
+                totalCount: '',
+                currentPage: '',
+                pageSize: '',
+                onPageChange: '',
+                siblingCount : ''
+            }
         });
     }
 

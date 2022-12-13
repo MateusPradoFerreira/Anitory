@@ -22,7 +22,7 @@
         margin-bottom: 18px;
         animation: tittleSurg 0.5s ease-in-out;
     }
-    
+
     &__animeName {
         color: white;
         max-width: 650px;
@@ -32,6 +32,14 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+
+    &__subTitle {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 38px;
+        margin-top: 13px;
     }
 }
 

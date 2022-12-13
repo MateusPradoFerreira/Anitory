@@ -66,7 +66,19 @@ class Anime extends Component {
         var id = urlClass.searchParams.get("id");
 
         if (id === null) {
-            window.location.href = window.location.href.replace(window.location.pathname, '');
+            const response = await this.getFetch('/random/anime', {});
+            const responseView = await this.getFetch('/anime/' + response.data.data.mal_id + '/' + this.state.View, {});
+
+            if (this.state.status === 'loading') {
+                this.setState({
+                    status: 'success',
+                    Anime: response.data.data,
+                    View: 'episodes',
+                    ViewData: responseView.data.data,
+                    genres: this.concatenarGeneros(response.data.data.genres)
+                });
+            };
+
         } else {
 
             const response = await this.getFetch('/anime/' + id, {});
@@ -81,7 +93,6 @@ class Anime extends Component {
                     genres: this.concatenarGeneros(response.data.data.genres)
                 });
             };
-
         };
     }
 
@@ -124,6 +135,8 @@ class Anime extends Component {
                                         <p className='c-text__year' >{this.state.Anime.year !== null ? this.state.Anime.year : ''}</p>
                                     </FlexContainer>
                                 </div>
+                                <h2 className='c-title__subTitle'>Sinopse</h2>
+                                <p className='c-text__sinopse'>{this.state.Anime.synopsis}</p>
                             </>
 
                             <div>
