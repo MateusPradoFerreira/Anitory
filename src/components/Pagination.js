@@ -28,9 +28,7 @@ function Pagination(props) {
     };
 
     function onPrevious() {
-        if (props.currentPage > Nbuttons) {
-            props.onPageChange(false, props.search, props.currentPage - 1);
-        }
+        props.onPageChange(false, props.search, props.currentPage - 1);
     };
 
     return (
