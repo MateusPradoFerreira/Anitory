@@ -1,5 +1,5 @@
 // Components
-import NavBar from "../NavBar";
+import NavBar from "../navBar/HeaderNavBar";
 import FlexContainer from "../../containers/FlexContainer";
 import Button4x4 from "../Button4x4";
 

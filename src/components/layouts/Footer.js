@@ -1,7 +1,7 @@
 // Components
 import Container from "../../containers/Container";
 import FlexContainer from "../../containers/FlexContainer";
-import NavBar from "../NavBar2";
+import NavBar from "../navBar/FooterNavBar";
 
 // img
 import Toru from '../../img/toru.png';

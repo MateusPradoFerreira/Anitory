@@ -281,6 +281,26 @@
   margin: 0 20px;
 }
 
+.c-navBarAnime {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  border-bottom: 2px solid var(--color-palette-grey);
+}
+
+.c-navBarAnime__bnt {
+  cursor: pointer;
+  padding: 5px 20px;
+  border-radius: 5px 5px 0px 0px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #ffffff;
+  margin-right: 5px;
+  background-color: var(--color-palette-lred);
+}
+
 .c-button__min {
   width: 40px;
   height: 40px;
@@ -439,7 +459,7 @@
 .c-animeTitles {
   margin-top: 240px;
   padding-bottom: 10px;
-  border-bottom: 2px solid #9C9C9C;
+  border-bottom: 2px solid var(--color-palette-grey);
 }
 
 .c-searchBar {
@@ -534,6 +554,46 @@
   padding-top: 1px;
   cursor: pointer;
   margin: 5px;
+}
+
+.c-trailer {
+  background-position: center;
+  background-size: 100%;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0px 0px 30px 5px black;
+          box-shadow: inset 0px 0px 30px 5px black;
+}
+
+.c-trailer__icon {
+  width: 35px;
+  height: 35px;
+}
+
+.c-trailer__innerBox {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #8d8d8d;
+  opacity: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .c-title__logo a {

@@ -8,6 +8,8 @@ import tohruSad from '../img/tohruSad.png';
 import Main from '../components/layouts/Main';
 import FlexContainer from '../containers/FlexContainer';
 import Banner from '../components/Banner';
+import Trailer from '../components/Trailer';
+import AnimeNavBar from '../components/navBar/AnimeNavBar'
 
 // Axios
 import Api from '../api/Api';
@@ -100,6 +102,7 @@ class Anime extends Component {
         var urlClass = new URL(window.location.href);
         var id = urlClass.searchParams.get("id");
         const responseView = await this.getFetch('/anime/' + id + '/' + view, {});
+        console.log(responseView.data.data)
 
         this.setState({
             status: 'success',
@@ -111,6 +114,23 @@ class Anime extends Component {
     }
 
     render() {
+
+        var navBarList = [
+            {
+                placeholder: 'episodios',
+                function: () => this.setView('episodes')
+            }, {
+                placeholder: 'personagens',
+                function: () => this.setView('characters')
+            }, {
+                placeholder: 'Produção',
+                function: () => this.setView('staff')
+            }, {
+                placeholder: 'reviews',
+                function: () => this.setView('reviews')
+            }
+        ]
+
         if (this.state.status === 'success') {
             return (
                 <>
@@ -118,6 +138,18 @@ class Anime extends Component {
                     <Main compClass='__anime' >
                         <section className='l-latBar' >
                             <img className='c-animeFolder' src={this.state.Anime.images.jpg.large_image_url} alt='img' />
+                            <div style={{ marginTop: '450px' }} />
+                            {this.state.Anime.trailer.url === null ? '' :
+                                <>
+                                    <h2 className='c-title__subTitle'>Assista ao trailer</h2>
+                                    <Trailer
+                                        src={this.state.Anime.trailer.images.large_image_url}
+                                        width='300px'
+                                        height='157px'
+                                        link={this.state.Anime.trailer.url}
+                                    />
+                                </>
+                            }
                         </section>
                         <section className='l-sessions' >
                             <>
@@ -132,39 +164,49 @@ class Anime extends Component {
                                 <div className='c-animeTitles' >
                                     <FlexContainer size='100%' justify='space-between' display='flex'>
                                         <p className='c-text__titles' >{'Anitory > Anime > ' + this.state.Anime.title}</p>
-                                        <p className='c-text__year' >{this.state.Anime.year !== null ? this.state.Anime.year : ''}</p>
+                                        <p className='c-text__year' >{this.state.Anime.year !== null ? this.state.Anime.year : this.state.Anime.type}</p>
                                     </FlexContainer>
                                 </div>
                                 <h2 className='c-title__subTitle'>Sinopse</h2>
                                 <p className='c-text__sinopse'>{this.state.Anime.synopsis}</p>
                             </>
 
-                            <div>
-                                <button type='button' onClick={() => this.setView('episodes')} >episodes</button>
-                                <button type='button' onClick={() => this.setView('characters')} >characters</button>
-                                <button type='button' onClick={() => this.setView('reviews')} >reviews</button>
-                            </div>
+                            <>
+                                <AnimeNavBar navBarList={navBarList} />
 
-                            {this.state.View === 'episodes' ? <div>
-                                <h2 className='c-title__subTitle'>Episodios</h2>
-                                {this.state.ViewData.map((episode) => (
-                                    <p>episode = {episode.title}</p>
-                                ))}
-                            </div> : ''}
+                                {this.state.View === 'episodes' ? <div>
+                                    <h2 className='c-title__subTitle'>Episodios</h2>
+                                    {this.state.ViewData.map((episode) => (
+                                        <p>episode = {episode.title}</p>
+                                    ))}
+                                </div> : ''}
 
-                            {this.state.View === 'characters' ? <div>
-                                <h2 className='c-title__subTitle'>Personagens</h2>
-                                {this.state.ViewData.map((character) => (
-                                    <p>character = {character.character.name}</p>
-                                ))}
-                            </div> : ''}
+                                {this.state.View === 'characters' ? <div>
+                                    <h2 className='c-title__subTitle'>Personagens</h2>
+                                    <FlexContainer display='flex' justify='' wrap='wrap' justify='space-between'>
+                                        {this.state.ViewData.map((character) => (
+                                            <div>
+                                                <img style={{width: '160px', height: '250px', objectFit: 'cover'}} src={character.character.images.jpg.image_url} alt='dad' />
+                                                <p>{character.character.name}</p>
+                                            </div>
+                                        ))}
+                                    </FlexContainer>
+                                </div> : ''}
 
-                            {this.state.View === 'reviews' ? <div>
-                                <h2 className='c-title__subTitle'>Reviews</h2>
-                                {this.state.ViewData.map((review) => (
-                                    <p>review = {review.user.username}</p>
-                                ))}
-                            </div> : ''}
+                                {this.state.View === 'reviews' ? <div>
+                                    <h2 className='c-title__subTitle'>Reviews</h2>
+                                    {this.state.ViewData.map((review) => (
+                                        <p>review = {review.user.username}</p>
+                                    ))}
+                                </div> : ''}
+
+                                {this.state.View === 'staff' ? <div>
+                                    <h2 className='c-title__subTitle'>staff</h2>
+                                    {this.state.ViewData.map((staff) => (
+                                        <p>{staff.person.name}</p>
+                                    ))}
+                                </div> : ''}
+                            </>
                         </section>
                     </Main>
                 </>

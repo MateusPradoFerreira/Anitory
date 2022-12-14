@@ -48,3 +48,21 @@
         margin: 0 20px;
     }
 }
+
+.c-navBarAnime {
+    display: flex;
+    list-style: none;
+    border-bottom: 2px solid var(--color-palette-grey);
+
+    &__bnt {
+        cursor: pointer;
+        padding: 5px 20px;
+        border-radius: 5px 5px 0px 0px;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        color: #ffffff;
+        margin-right: 5px;
+        background-color: var(--color-palette-lred);
+    }
+}
