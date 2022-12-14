@@ -183,7 +183,7 @@ class Anime extends Component {
 
                                 {this.state.View === 'characters' ? <div>
                                     <h2 className='c-title__subTitle'>Personagens</h2>
-                                    <FlexContainer display='flex' justify='' wrap='wrap' justify='space-between'>
+                                    <FlexContainer display='flex' wrap='wrap' justify='space-between'>
                                         {this.state.ViewData.map((character) => (
                                             <div>
                                                 <img style={{width: '160px', height: '250px', objectFit: 'cover'}} src={character.character.images.jpg.image_url} alt='dad' />
