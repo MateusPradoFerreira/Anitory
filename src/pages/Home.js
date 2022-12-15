@@ -10,7 +10,7 @@ import SVGAdd from '../Svg/All/broken/add.svg'
 import Main from '../components/layouts/Main';
 import Slider from '../components/Slider';
 import FlexContainer from '../containers/FlexContainer';
-import CardAnime from '../components/CardAnime';
+import CardAnime from '../components/cards/Anime';
 import Button4x4 from '../components/Button4x4';
 
 // Axios

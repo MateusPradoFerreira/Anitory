@@ -6,7 +6,7 @@ import tohruSad from '../img/tohruSad.png';
 // Components
 import Main from '../components/layouts/Main';
 import FlexContainer from '../containers/FlexContainer';
-import CardAnime from '../components/CardAnime';
+import CardAnime from '../components/cards/Anime';
 import SearchBar from '../components/SearchBar';
 import Pagination from '../components/Pagination';
 

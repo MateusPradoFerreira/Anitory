@@ -1,0 +1,36 @@
+// ================================================================================
+// CARD VIDEO
+// ================================================================================
+
+.c-cardEpisode {
+    margin-top: 10px;
+
+    a {
+        display: flex;
+        text-decoration: none;
+    }
+    
+    &__box {
+        margin-left: 30px;
+    }
+
+    &__title {
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 22px;
+        color: #515151;
+        margin-top: 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 700px;
+    }
+
+    &__episode {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 27px;
+        color: var(--color-palette-lred);
+    }
+}
