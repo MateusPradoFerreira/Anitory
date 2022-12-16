@@ -7,3 +7,15 @@
     max-width: 1200px;
     margin: 0 auto;
 }
+
+.c-containerGray {
+    width: 100%;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: var(--color-palette-lgry);
+    margin-top: 30px;
+    
+    &__box {
+        margin-bottom: 10px;
+    }
+}

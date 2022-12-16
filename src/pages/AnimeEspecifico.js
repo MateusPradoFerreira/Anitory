@@ -14,6 +14,8 @@ import RankBox from '../components/RankBox';
 import CardCharacter from '../components/cards/Characters';
 import Episode from '../components/cards/Episode';
 import CardPerson from '../components/cards/Person';
+import GrayContainer from '../containers/GrayContainer';
+import Infos from '../components/cards/Infos';
 
 // Axios
 import Api from '../api/Api';
@@ -74,14 +76,14 @@ class Anime extends Component {
         if (id === null) {
             const response = await this.getFetch('/random/anime', {});
             const responseView = await this.getFetch('/anime/' + response.data.data.mal_id + '/videos', {});
-
             if (this.state.status === 'loading') {
                 this.setState({
                     status: 'success',
                     Anime: response.data.data,
                     View: 'videos',
                     ViewData: responseView.data.data,
-                    genres: this.concatenarGeneros(response.data.data.genres)
+                    genres: this.concatenarGeneros(response.data.data.genres),
+                    themes: this.concatenarGeneros(response.data.data.themes)
                 });
             };
 
@@ -89,14 +91,14 @@ class Anime extends Component {
 
             const response = await this.getFetch('/anime/' + id, {});
             const responseView = await this.getFetch('/anime/' + id + '/videos', {});
-
             if (this.state.status === 'loading') {
                 this.setState({
                     status: 'success',
                     Anime: response.data.data,
                     View: 'videos',
                     ViewData: responseView.data.data,
-                    genres: this.concatenarGeneros(response.data.data.genres)
+                    genres: this.concatenarGeneros(response.data.data.genres),
+                    themes: this.concatenarGeneros(response.data.data.themes)
                 });
             };
         };
@@ -106,7 +108,6 @@ class Anime extends Component {
         var urlClass = new URL(window.location.href);
         var id = urlClass.searchParams.get("id");
         const responseView = await this.getFetch('/anime/' + id + '/' + view, {});
-        console.log(responseView.data.data)
 
         this.setState({
             status: 'success',
@@ -154,6 +155,55 @@ class Anime extends Component {
                                     />
                                 </>
                             }
+                            <GrayContainer>
+                                <div className='c-containerGray__box'>
+                                    <h2 className='c-title__lateralTitle'>Informações Gerais</h2>
+                                    <div>
+                                        <Infos span={'Nome:'} info={this.state.Anime.title} />
+                                        {this.state.Anime.year !== null && this.state.Anime.season !== null ?
+                                            <Infos span={'Season:'} info={this.state.Anime.year + ' | ' + this.state.Anime.season} /> : ''
+                                        }
+                                        <Infos span={'Status:'} info={this.state.Anime.status} />
+                                        <Infos span={'Exibição:'} info={this.state.Anime.aired.string} />
+                                        <Infos span={'Source:'} info={this.state.Anime.source} />
+                                        <Infos span={'N° Episódios:'} info={this.state.Anime.episodes} />
+                                        <Infos span={'Duração:'} info={this.state.Anime.duration} />
+                                        {this.state.genres !== '' ?
+                                            <Infos span={'Gêneros:'} info={this.state.genres} /> : ''
+                                        }
+                                        {this.state.themes !== '' ?
+                                            <Infos span={'Temas:'} info={this.state.themes} /> : ''
+                                        }
+                                    </div>
+                                </div>
+                                <div className='c-containerGray__box'>
+                                    <h2 className='c-title__lateralTitle'>Avaliação</h2>
+                                    <div>
+                                        <Infos span={'Score:'} info={this.state.Anime.score} />
+                                        <Infos span={'Avaliado por:'} info={this.state.Anime.scored_by} />
+                                        <Infos span={'Rank:'} info={'#' + this.state.Anime.rank} />
+                                        <Infos span={'Favoritos:'} info={this.state.Anime.favorites} />
+                                        <Infos span={'Pupularidade:'} info={this.state.Anime.popularity} />
+                                        <Infos span={'Aprovação :'} info={this.state.Anime.approved === true ? 'sim' : 'não'} />
+                                    </div>
+                                </div>
+                                <div className='c-containerGray__box'>
+                                    <h2 className='c-title__lateralTitle'>Studios</h2>
+                                    <div>
+                                        {this.state.Anime.studios.map((studio) => (
+                                            <Infos key={studio.name} span={studio.type + ':'} info={studio.name} />
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className='c-containerGray__box'>
+                                    <h2 className='c-title__lateralTitle'>Produtores</h2>
+                                    <div>
+                                        {this.state.Anime.producers.map((producer) => (
+                                            <Infos key={producer.name} span={producer.type + ':'} info={producer.name} />
+                                        ))}
+                                    </div>
+                                </div>
+                            </GrayContainer>
                         </section>
                         <section className='l-sessions' >
                             <div className='c-animeHeader' >

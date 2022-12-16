@@ -36,6 +36,7 @@
   --color-palette-lmag: #d81b60;
   --color-palette-mmag: #880e4f;
   --color-palette-grey: #a7a7a7;
+  --color-palette-lgry: #F0F0F0;
   --color-palette-bgry: #757575;
   --color-palette-blck: #343434;
   --color-palette-bdck: #1f1f1f;
@@ -216,6 +217,18 @@
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.c-containerGray {
+  width: 100%;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: var(--color-palette-lgry);
+  margin-top: 30px;
+}
+
+.c-containerGray__box {
+  margin-bottom: 10px;
 }
 
 .c-animeFolder {
@@ -683,6 +696,16 @@
   margin-bottom: 20px;
 }
 
+.c-title__lateralTitle {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+  border-bottom: 2px solid #9C9C9C;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
 @-webkit-keyframes tittleSurg {
   0% {
     -webkit-clip-path: polygon(0 100%, 0 100%, 0 0, 0 0);
@@ -748,6 +771,23 @@
   margin-bottom: 18px;
 }
 
+.c-text__lateralText {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #5b5b5b;
+  margin-top: 5px;
+}
+
+.c-text__lateralText span {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--color-palette-lred);
+}
+
 .c-cardAnime {
   width: 200px;
   -webkit-animation: cardSurg 0.5s ease-in-out;
@@ -809,13 +849,9 @@
 
 .c-cardEpisode {
   margin-top: 10px;
-}
-
-.c-cardEpisode a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  text-decoration: none;
 }
 
 .c-cardEpisode__box {
