@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const api = axios.create({
+export const API = axios.create({
     baseURL: 'https://api.jikan.moe/v4'
 });
-
-export default api;

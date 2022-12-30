@@ -1,143 +1,70 @@
-import { Component } from 'react';
-
-// Img
-import tohruSad from '../img/tohruSad.png';
-
-// Svg
-import SVGAdd from '../Svg/All/broken/add.svg'
-
-// Components
+import SVGAdd from '../assets/Svg/All/broken/add.svg'
 import Main from '../components/layouts/Main';
 import Slider from '../components/Slider';
 import FlexContainer from '../containers/FlexContainer';
 import CardAnime from '../components/cards/Anime';
 import Button4x4 from '../components/Button4x4';
-
-// Axios
-import Api from '../api/Api';
-
-// Router
+import useAnimeQuery from '../hooks/useAnimeQuery';
+import Error404 from '../components/layouts/Error404';
+import formatAnimeSession from '../utils/formatAnimeSession'
+import useSearchStore from '../store/useSearchStore';
 import { Link } from 'react-router-dom';
+import Session from '../components/layouts/Session';
+import SideBar from '../components/layouts/SideBar';
 
-class Home extends Component {
-    constructor(props) {
-        super(props);
-        this.componentDidMount = this.componentDidMount.bind(this);
-        this.getError = this.getError.bind(this);
-        this.getFetch = this.getFetch.bind(this);
+function Home() {
+    const setCurrentPath = useSearchStore(state => state.setCurrentPath);
+
+    const { data: dataSeasonNow, isLoading: isLoadingSeasonNow, isError: isErrorSeasonNow } = useAnimeQuery('/seasons/now?limit=4');
+    const { data: dataTopAnime, isLoading: isLoadingTopAnime, isError: isErrorTopAnime } = useAnimeQuery('/top/anime?limit=4');
+    const { data: dataTopAnime2022, isLoading: isLoadingTopAnime2022, isError: isErrorTopAnime2022 } = useAnimeQuery('/seasons/2022/winter?limit=24');
+
+    const sessionsList = [
+        formatAnimeSession('Animes de Temporada', dataSeasonNow?.data, '/seasons/now'),
+        formatAnimeSession('Animes mais assistidos', dataTopAnime?.data, '/top/anime'),
+        formatAnimeSession('Animes condecorados em 2022', dataTopAnime2022?.data, '/seasons/2022/winter')
+    ]
+
+    if (isLoadingSeasonNow || isLoadingTopAnime || isLoadingTopAnime2022) {
+        return (
+            <Main>
+                <p>loading...</p>
+            </Main>
+        );
     }
 
-    state = {
-        status: 'loading',
-        Animes: []
+    if (isErrorSeasonNow || isErrorTopAnime || isErrorTopAnime2022) {
+        return <Error404 />
     }
 
-    getError(error) {
-        console.log(error);
-        this.setState({
-            status: 'error',
-            errorCode: error.response.status,
-            statusText: error.response.statusText
-        })
-    }
+    return (
+        <>
+            <Slider />
+            <Main compClass='__home'>
+                <Session>
+                    {sessionsList.map((session) => (
+                        <div key={session.title}>
+                            <FlexContainer size='100%' display='flex' justify='space-between'>
+                                <h1 className='c-title__session'>{session.title}</h1>
+                                <Link to='/animes'>
+                                    <Button4x4 activeFunction={() => { setCurrentPath(session.path); window.scroll(0, 0); }} icon={SVGAdd} />
+                                </Link>
+                            </FlexContainer>
+                            <FlexContainer display='flex' size='100%' wrap='wrap' justify='left' gap='15px'>
+                                {session.animesList.map((anime) => (
+                                    <CardAnime key={anime.title} id={anime.mal_id} capa={anime.images.jpg.image_url} name={anime.title} genres={anime.genres} />
+                                ))}
+                            </FlexContainer> <br />
+                        </div>
+                    ))}
+                </Session>
+                <SideBar></SideBar>
+            </Main>
+        </>
+    );
 
-    async getFetch(url, parameters) {
-        var prmts = '?';
-        for (const [key, value] of Object.entries(parameters)) {
-            prmts = prmts + '&' + key + '=' + value;
-        }
 
-        var completeUrl = url + prmts;
-        const response = await Api.get(completeUrl).catch((error) => this.getError(error));
-        return response;
-    }
 
-    criaSession(title, response, temp) {
-        return {
-            title: title,
-            pages: response.data.pagination.last_visible_page,
-            total: response.data.pagination.items.total,
-            animes: response.data.data,
-            temp: temp
-        }
-    }
-
-    chamaSession(temp) {
-        window.location.href = '/animes?temp=' + temp
-    }
-
-    async componentDidMount() {
-        window.scroll(0, 0);
-        // Api
-        const responseSeason = await this.getFetch('/seasons/now', { limit: 4, type: 'anime' });
-        const responseFilmes = await this.getFetch('/top/anime', { limit: 4, type: 'anime' });
-        const responseSS2021 = await this.getFetch('/seasons/2022/winter', { limit: 16, type: 'anime' });
-
-        if (this.state.status === 'loading') {
-            var Animes = [
-                this.criaSession('Animes de Temporada', responseSeason, 'seasons/now'),
-                this.criaSession('Animes mais assistidos', responseFilmes, 'top/anime'),
-                this.criaSession('Animes condecorados em 2022', responseSS2021, 'seasons/2022/winter')
-            ];
-
-            this.setState({
-                status: 'success',
-                Animes: Animes
-            })
-        }
-
-    }
-
-    render() {
-        if (this.state.status === 'success') {
-            return (
-                <>
-                    <Slider />
-                    <Main compClass='__home'>
-                        <section className='l-sessions' >
-                            {this.state.Animes.map((session) => (
-                                <div key={session.title}>
-                                    <FlexContainer size='100%' display='flex' justify='space-between'>
-                                        <h1 className='c-title__session'>{session.title}</h1>
-                                        <Button4x4 activeFunction={() => this.chamaSession(session.temp)} icon={SVGAdd} />
-                                    </FlexContainer>
-                                    <FlexContainer display='flex' size='100%' wrap='wrap' justify='left'  gap='15px'>
-                                        {session.animes.map((anime) => (
-                                            <CardAnime key={anime.title} id={anime.mal_id} capa={anime.images.jpg.image_url} name={anime.title} genres={anime.genres} />
-                                        ))}
-                                    </FlexContainer> <br />
-                                </div>
-                            ))}
-                        </section>
-                        <section className='l-latBar' >
-
-                        </section>
-                    </Main>
-                </>
-            );
-        } else if (this.state.status === 'loading') {
-            return (
-                <Main>
-                    <p>loading...</p>
-                </Main>
-            );
-        } else if (this.state.status === 'error') {
-            return (
-                <Main>
-                    <FlexContainer display='flex' size='100%' wrap='wrap' justify='center'>
-                        <FlexContainer size='374px' display='flex' wrap='wrap' justify='center'>
-                            <img className='c-errorTohru' src={tohruSad} alt='img' />
-                            <div className='c-errorBox' >
-                                <h1>{this.state.errorCode}</h1>
-                                <p>{this.state.statusText}</p>
-                            </div>
-                            <p className='c-errorText'>por favor cheque a url: <Link to={'/'}>http://Anitory.com</Link> </p>
-                        </FlexContainer>
-                    </FlexContainer>
-                </Main>
-            );
-        }
-    }
 }
 
 export default Home;

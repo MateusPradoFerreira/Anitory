@@ -4,16 +4,15 @@ import FlexContainer from "../../containers/FlexContainer";
 import Button4x4 from "../Button4x4";
 
 // svg
-import SVGSearch from '../../Svg/All/broken/search-normal-1.svg';
-import SVGRandom from '../../Svg/All/broken/arrange-circle-2.svg';
+import SVGSearch from '../../assets/Svg/All/broken/search-normal-1.svg';
+import SVGRandom from '../../assets/Svg/All/broken/arrange-circle-2.svg';
 import { Link } from "react-router-dom";
 
 function Header() {
 
     var NavBarList = [
         { item: 'Home', link: '/' },
-        { item: 'Animes', link: '/animes' },
-        { item: 'Personagens', link: '/personagens' }
+        { item: 'Animes', link: '/animes' }
     ];
 
     function random() { 

@@ -3,31 +3,28 @@ import ReactDOM from 'react-dom/client';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-// Css
-import './scss/styles.css';
-
-// Components
+import './styles/styles.css';
 import Header from './components/layouts/Header';
 import Footer from './components/layouts/Footer';
-
-// Pages
 import Home from './pages/Home';
 import Animes from './pages/Animes';
-import Personagens from './pages/Personagens';
-import AnimeEspecifico from './pages/AnimeEspecifico';
+import { QueryClientProvider } from 'react-query'
+import { queryClient } from './services/queryClient'
+import CurrentAnime from './pages/CurrentAnime';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Router>
-      <Header />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/animes' element={<Animes />} />
-        <Route path='/personagens' element={<Personagens />} />
-        <Route path='/anime' element={<AnimeEspecifico view='episodes' />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/animes' element={<Animes />} />
+          <Route path='/anime/*' element={<CurrentAnime />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </QueryClientProvider>
   </React.StrictMode>
 );

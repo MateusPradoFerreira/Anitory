@@ -1,12 +1,15 @@
 // SVGs
-import SVGsearch from '../Svg/All/broken/search-normal-2.svg';
+import SVGsearch from '../assets/Svg/All/broken/search-normal-2.svg';
+import useSearchStore from '../store/useSearchStore';
 
-function SearchBar(props) {
+function SearchBar() {
+    const setCurrentSearch = useSearchStore(state => state.setCurrentSearch);
+
     return (
-        <form>
+        <form onSubmit={(e) => { e.preventDefault(); setCurrentSearch(document.getElementById('input').value) }}>
             <div className='c-searchBar'>
                 <input type='text' id='input' placeholder='Busque pelos seus animes favoritos' />
-                <button className='c-searchBar__button' type='submit' onClick={(e) => props.buscar(e, document.getElementById('input').value, 1)}>
+                <button className='c-searchBar__button' type='submit'>
                     <img src={SVGsearch} alt='ssv' />
                 </button>
             </div>

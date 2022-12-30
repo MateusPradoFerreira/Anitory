@@ -4,8 +4,8 @@ import FlexContainer from "../../containers/FlexContainer";
 import NavBar from "../navBar/FooterNavBar";
 
 // img
-import Toru from '../../img/toru.png';
-import MyAnimeList from '../../img/MyAnimeList.png';
+import Toru from '../../assets/img/toru.png';
+import MyAnimeList from '../../assets/img/MyAnimeList.png';
 
 function Footer() {
 

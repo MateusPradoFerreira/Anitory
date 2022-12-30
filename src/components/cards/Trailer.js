@@ -1,5 +1,5 @@
 // SVGs
-import icon from '../../Svg/All/broken/play-circle.svg';
+import icon from '../../assets/Svg/All/broken/play-circle.svg';
 
 function Trailer(props) {
     return (

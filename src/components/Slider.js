@@ -1,5 +1,5 @@
 // Img
-import Slide05 from '../img/slide (5).jpg';
+import Slide05 from '../assets/img/slide (5).jpg';
 
 function Slider() {
     return (
