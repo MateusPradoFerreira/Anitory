@@ -40,7 +40,7 @@
 
     &__anime {
         width: 90%;
-        max-width: 1200px;
+        max-width: 1200px; 
         margin: 0 auto;
         min-height: 100vh;
         height: auto;
@@ -64,4 +64,12 @@
 
 .l-filter {
     grid-area: filter;
+}
+
+@media (max-width: 1200px) {
+    .l-main {
+        &__home {
+            display: block;
+        }
+    }
 }

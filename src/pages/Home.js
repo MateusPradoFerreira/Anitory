@@ -14,6 +14,13 @@ import SideBar from '../components/layouts/SideBar';
 
 function Home() {
     const setCurrentPath = useSearchStore(state => state.setCurrentPath);
+    const setCurrentPage = useSearchStore(state => state.setCurrentPage);
+    const setCurrentAnimePath = useSearchStore(state => state.setCurrentAnimePath);
+    const setCurrentSearch = useSearchStore(state => state.setCurrentSearch);
+
+    setCurrentPage(1);
+    setCurrentAnimePath('/videos');
+    setCurrentSearch('');
 
     const { data: dataSeasonNow, isLoading: isLoadingSeasonNow, isError: isErrorSeasonNow } = useAnimeQuery('/seasons/now?limit=4');
     const { data: dataTopAnime, isLoading: isLoadingTopAnime, isError: isErrorTopAnime } = useAnimeQuery('/top/anime?limit=4');
@@ -41,6 +48,7 @@ function Home() {
         <>
             <Slider />
             <Main compClass='__home'>
+                <SideBar></SideBar>
                 <Session>
                     {sessionsList.map((session) => (
                         <div key={session.title}>
@@ -50,7 +58,7 @@ function Home() {
                                     <Button4x4 activeFunction={() => { setCurrentPath(session.path); window.scroll(0, 0); }} icon={SVGAdd} />
                                 </Link>
                             </FlexContainer>
-                            <FlexContainer display='flex' size='100%' wrap='wrap' justify='left' gap='15px'>
+                            <FlexContainer display='flex' size='100%' wrap='wrap' justify='space-between' gap='15px'>
                                 {session.animesList.map((anime) => (
                                     <CardAnime key={anime.title} id={anime.mal_id} capa={anime.images.jpg.image_url} name={anime.title} genres={anime.genres} />
                                 ))}
@@ -58,7 +66,6 @@ function Home() {
                         </div>
                     ))}
                 </Session>
-                <SideBar></SideBar>
             </Main>
         </>
     );

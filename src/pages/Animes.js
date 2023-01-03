@@ -14,8 +14,11 @@ function Animes() {
     const currentPage = useSearchStore(state => state.currentPage);
     const currentLimit = useSearchStore(state => state.currentLimit);
     const currentPath = useSearchStore(state => state.currentPath);
+    const setCurrentAnimePath = useSearchStore(state => state.setCurrentAnimePath);
 
-    const { data: animesList, isLoading, isError } = useAnimeQuery(`${currentPath}?sfw=true&limit=${currentLimit}&page=${currentPage}&q=${currentSearch}`);
+    setCurrentAnimePath('/videos');
+
+    const { data: animesList, isLoading, isError } = useAnimeQuery(`${currentPath}?limit=${currentLimit}&page=${currentPage}&q=${currentSearch}`);
 
     if (isLoading) {
         return (
@@ -31,8 +34,6 @@ function Animes() {
     if (isError) {
         return <Error404 />
     }
-
-    console.log(animesList)
 
     return (
         <Main compClass='__search'>

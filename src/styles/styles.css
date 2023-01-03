@@ -213,6 +213,12 @@
   grid-area: filter;
 }
 
+@media (max-width: 1200px) {
+  .l-main__home {
+    display: block;
+  }
+}
+
 .l-container {
   width: 90%;
   max-width: 1200px;
@@ -386,7 +392,6 @@
 
 .c-slider__slide {
   width: 100%;
-  min-width: 1200px;
   height: 360px;
   max-height: 410px;
 }
@@ -404,7 +409,6 @@
 
 .c-slider__slide img {
   width: 100%;
-  min-width: 1200px;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
