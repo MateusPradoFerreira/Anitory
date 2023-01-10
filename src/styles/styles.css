@@ -860,6 +860,66 @@
   }
 }
 
+.c-mostWatched {
+  margin-top: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.c-mostWatched__content {
+  width: 175px;
+}
+
+.c-mostWatched__img {
+  width: 90px;
+  height: 60px;
+  border-radius: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.c-mostWatched__name {
+  font-weight: 400;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.c-mostWatched__genres {
+  font-weight: 400;
+  font-size: 11px;
+  color: #757575;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.c-mostWatched__score {
+  font-weight: 600;
+  font-size: 14px;
+  color: #f49d1a;
+  margin-top: 2px;
+}
+
+.c-mostWatched__star {
+  width: 17px;
+  height: 17px;
+}
+
+.c-mostWatched__ff {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+
 .c-cardEpisode {
   margin-top: 10px;
   display: -webkit-box;

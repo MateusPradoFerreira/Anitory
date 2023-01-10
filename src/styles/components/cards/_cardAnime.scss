@@ -40,7 +40,61 @@
 @keyframes cardSurg {
     0% {
         clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
-    } 100% {
+    }
+    100% {
         clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+    }
+}
+
+.c-mostWatched {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+
+    &__content {
+        width: 175px;
+    }
+
+    &__img {
+        width: 90px;
+        height: 60px;
+        border-radius: 5px;
+        object-fit: cover;
+    }
+
+    &__name {
+        font-weight: 400;
+        font-size: 14px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &__genres {
+        font-weight: 400;
+        font-size: 11px;
+        color: #757575;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &__score {
+        font-weight: 600;
+        font-size: 14px;
+        color: #f49d1a;
+        margin-top: 2px;
+    }
+
+    &__star {
+        width: 17px;
+        height: 17px;
+    }
+
+    &__ff {
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
 }

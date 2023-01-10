@@ -8,6 +8,9 @@ import Error404 from '../components/layouts/Error404';
 import useSearchStore from '../store/useSearchStore';
 import Session from '../components/layouts/Session';
 import SideBar from '../components/layouts/SideBar';
+import MostWatched from '../components/cards/MostWatched';
+import { useNavigate } from 'react-router-dom';
+import GrayContainer from '../containers/GrayContainer';
 
 function Animes() {
     const currentSearch = useSearchStore(state => state.currentSearch);
@@ -15,12 +18,14 @@ function Animes() {
     const currentLimit = useSearchStore(state => state.currentLimit);
     const currentPath = useSearchStore(state => state.currentPath);
     const setCurrentAnimePath = useSearchStore(state => state.setCurrentAnimePath);
+    const navigate = useNavigate()
 
     setCurrentAnimePath('/videos');
 
     const { data: animesList, isLoading, isError } = useAnimeQuery(`${currentPath}?limit=${currentLimit}&page=${currentPage}&q=${currentSearch}`);
+    const { data: dataSide, isLoading: isLoadingSide, isError: isErrorSide } = useAnimeQuery('/top/anime?limit=16');
 
-    if (isLoading) {
+    if (isLoading || isLoadingSide) {
         return (
             <Main compClass='__search'>
                 <section className='l-filter'>
@@ -31,7 +36,7 @@ function Animes() {
         );
     }
 
-    if (isError) {
+    if (isError || isErrorSide) {
         return <Error404 />
     }
 
@@ -41,8 +46,9 @@ function Animes() {
                 <SearchBar />
             </section>
             <Session>
-                <p className='c-text__path' >{'Anitory > Anime > Buscar' + (currentSearch === '' ? '' : '> ' + currentSearch)}</p>
-            {animesList.data.length === 0 ? <p>Sem resultados para a sua busca!</p> : ''}
+                <p className='c-text__path' >{'Anitory > Animes > Buscar' + (currentSearch === '' ? '' : '> ' + currentSearch)}</p>
+                {animesList.data.length === 0 ? <p>Sem resultados para a sua busca!</p> : ''}
+
 
                 <FlexContainer display='flex' size='100%' wrap='wrap' justify='left' height='80vh' gap='15px'>
                     {animesList.data.map((anime) => (
@@ -63,7 +69,16 @@ function Animes() {
                     lastPage={animesList.pagination.last_visible_page}
                 />
             </Session>
-            <SideBar></SideBar>
+            <SideBar>
+                <GrayContainer>
+                    <h2 className='c-title__lateralTitle'> Mais assistidos </h2>
+
+                    {dataSide?.data.map((anime) => (
+                        <MostWatched onClick={() => navigate(`/anime/${anime.mal_id}`)} src={anime.images.jpg.image_url} alt={anime.title} name={anime.title} genres={anime.genres} score={anime.score} />
+                    ))}
+
+                </GrayContainer>
+            </SideBar>
         </Main>
     );
 }

@@ -15,8 +15,8 @@ function Header() {
         { item: 'Animes', link: '/animes' }
     ];
 
-    function random() { 
-        window.location.href = '/anime';
+    function random() {
+        window.location.href = '/anime/random';
     };
 
     function seach() {

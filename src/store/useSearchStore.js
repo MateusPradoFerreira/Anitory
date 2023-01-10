@@ -17,6 +17,7 @@ const useSearchStore = create(
         },
         currentPage: 1,
         setCurrentPage: (currentPageID) => {
+            window.scroll(0,0);
             set(() => ({
                 currentPage: currentPageID
             }))

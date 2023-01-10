@@ -21,7 +21,13 @@ function CurrentAnime() {
     const animeID = params['*'];
     const currentAnimePath = useSearchStore(state => state.currentAnimePath);
 
-    const { data: AnimeDataMain, isLoading: isLoadingMain, isError: isErrorMain } = useAnimeQuery(`/anime/${animeID}`);
+    var path = `/anime/${animeID}`;
+
+    if( animeID === 'random') {
+        path = '/random/anime'
+    }
+
+    const { data: AnimeDataMain, isLoading: isLoadingMain, isError: isErrorMain } = useAnimeQuery(path);
 
     if (isLoadingMain) {
         return (
@@ -46,6 +52,8 @@ function CurrentAnime() {
         { placeholder: 'reviews', path: '/reviews' }
     ]
     
+    var ID = animeDataMain.mal_id
+
     return (
         <>
             <Banner img={animeDataMain.images.jpg.large_image_url} />
@@ -74,10 +82,10 @@ function CurrentAnime() {
                     <TitleTextBox title='Sinopse' text={animeDataMain.synopsis} />
                     <AnimeNavBar navBarList={navBarList} />
 
-                    {currentAnimePath === '/videos' ? <PathVideos animeID={animeID} /> : ''}
-                    {currentAnimePath === '/characters' ? <PathCharacters animeID={animeID} /> : ''}
-                    {currentAnimePath === '/staff' ? <PathStaff animeID={animeID} /> : ''}
-                    {currentAnimePath === '/reviews' ? <PathReviews animeID={animeID} /> : ''}
+                    {currentAnimePath === '/videos' ? <PathVideos animeID={ID} /> : ''}
+                    {currentAnimePath === '/characters' ? <PathCharacters animeID={ID} /> : ''}
+                    {currentAnimePath === '/staff' ? <PathStaff animeID={ID} /> : ''}
+                    {currentAnimePath === '/reviews' ? <PathReviews animeID={ID} /> : ''}
                 </Session>
             </Main>
         </>

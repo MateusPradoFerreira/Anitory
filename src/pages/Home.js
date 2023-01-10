@@ -8,9 +8,11 @@ import useAnimeQuery from '../hooks/useAnimeQuery';
 import Error404 from '../components/layouts/Error404';
 import formatAnimeSession from '../utils/formatAnimeSession'
 import useSearchStore from '../store/useSearchStore';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Session from '../components/layouts/Session';
 import SideBar from '../components/layouts/SideBar';
+import GrayContainer from '../containers/GrayContainer';
+import MostWatched from '../components/cards/MostWatched';
 
 function Home() {
     const setCurrentPath = useSearchStore(state => state.setCurrentPath);
@@ -18,21 +20,25 @@ function Home() {
     const setCurrentAnimePath = useSearchStore(state => state.setCurrentAnimePath);
     const setCurrentSearch = useSearchStore(state => state.setCurrentSearch);
 
+    const navigate = useNavigate()
+
     setCurrentPage(1);
     setCurrentAnimePath('/videos');
     setCurrentSearch('');
 
     const { data: dataSeasonNow, isLoading: isLoadingSeasonNow, isError: isErrorSeasonNow } = useAnimeQuery('/seasons/now?limit=4');
-    const { data: dataTopAnime, isLoading: isLoadingTopAnime, isError: isErrorTopAnime } = useAnimeQuery('/top/anime?limit=4');
+    const { data: dataTopAnime, isLoading: isLoadingTopAnime, isError: isErrorTopAnime } = useAnimeQuery('/seasons/upcoming?limit=8');
     const { data: dataTopAnime2022, isLoading: isLoadingTopAnime2022, isError: isErrorTopAnime2022 } = useAnimeQuery('/seasons/2022/winter?limit=24');
+
+    const { data: dataSide, isLoading: isLoadingSide, isError: isErrorSide } = useAnimeQuery('/top/anime?limit=16');
 
     const sessionsList = [
         formatAnimeSession('Animes de Temporada', dataSeasonNow?.data, '/seasons/now'),
-        formatAnimeSession('Animes mais assistidos', dataTopAnime?.data, '/top/anime'),
+        formatAnimeSession('Últimos Animes Anunciados', dataTopAnime?.data, '/seasons/upcoming'),
         formatAnimeSession('Animes condecorados em 2022', dataTopAnime2022?.data, '/seasons/2022/winter')
     ]
 
-    if (isLoadingSeasonNow || isLoadingTopAnime || isLoadingTopAnime2022) {
+    if (isLoadingSeasonNow || isLoadingTopAnime || isLoadingTopAnime2022 || isLoadingSide) {
         return (
             <Main>
                 <p>loading...</p>
@@ -40,7 +46,7 @@ function Home() {
         );
     }
 
-    if (isErrorSeasonNow || isErrorTopAnime || isErrorTopAnime2022) {
+    if (isErrorSeasonNow || isErrorTopAnime || isErrorTopAnime2022 || isErrorSide) {
         return <Error404 />
     }
 
@@ -48,7 +54,16 @@ function Home() {
         <>
             <Slider />
             <Main compClass='__home'>
-                <SideBar></SideBar>
+                <SideBar>
+                    <GrayContainer>
+                        <h2 className='c-title__lateralTitle'> Mais assistidos </h2>
+
+                        {dataSide?.data.map((anime) => (
+                            <MostWatched onClick={() => navigate(`/anime/${anime.mal_id}`)} src={anime.images.jpg.image_url} alt={anime.title} name={anime.title} genres={anime.genres} score={anime.score} />
+                        ))}
+
+                    </GrayContainer>
+                </SideBar>
                 <Session>
                     {sessionsList.map((session) => (
                         <div key={session.title}>
