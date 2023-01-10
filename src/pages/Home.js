@@ -16,8 +16,16 @@ import MostWatched from '../components/cards/MostWatched';
 
 function Home() {
     const setCurrentPath = useSearchStore(state => state.setCurrentPath);
+    const setCurrentPage = useSearchStore(state => state.setCurrentPage);
+    const setCurrentAnimePath = useSearchStore(state => state.setCurrentAnimePath);
+    const setCurrentSearch = useSearchStore(state => state.setCurrentSearch);
 
     const navigate = useNavigate()
+
+    setCurrentPage(1);
+    setCurrentAnimePath('/videos');
+    setCurrentSearch('');
+
     const { data: dataSeasonNow, isLoading: isLoadingSeasonNow, isError: isErrorSeasonNow } = useAnimeQuery('/seasons/now?limit=4');
     const { data: dataTopAnime, isLoading: isLoadingTopAnime, isError: isErrorTopAnime } = useAnimeQuery('/seasons/upcoming?limit=8');
     const { data: dataTopAnime2022, isLoading: isLoadingTopAnime2022, isError: isErrorTopAnime2022 } = useAnimeQuery('/seasons/2022/winter?limit=24');

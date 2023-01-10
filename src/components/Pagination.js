@@ -26,21 +26,25 @@ function Pagination(props) {
     function onNext() {
         if (props.currentPage < Nbuttons) {
             setCurrentPage(currentPage + 1);
+            window.scroll(0,0);
         }
     };
 
     function onPrevious() {
         if (props.currentPage > 1) {
             setCurrentPage(currentPage - 1);
+            window.scroll(0,0);
         }
     };
 
     function onFirst() {
         setCurrentPage(1);
+        window.scroll(0,0);
     };
 
     function onLast() {
         setCurrentPage(props.lastPage);
+        window.scroll(0,0);
     };
 
     return (
@@ -52,7 +56,7 @@ function Pagination(props) {
                     style={{ display: button.display }}
                     key={button.index}
                     className={'c-pagination' + (button.currentPage === true ? '__BTon' : '__BToff')}
-                    onClick={() => setCurrentPage(button.index)} >
+                    onClick={() =>{ setCurrentPage(button.index) ; window.scroll(0,0);}} >
                     {button.index < 10 ? '0' + button.index : button.index}
                 </button>
             ))}
