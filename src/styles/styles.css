@@ -84,6 +84,8 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .l-footer {
@@ -136,6 +138,12 @@
   margin-bottom: 5px;
   -webkit-filter: brightness(0) saturate(100%) invert(100%) sepia(2%) saturate(325%) hue-rotate(59deg) brightness(115%) contrast(100%);
           filter: brightness(0) saturate(100%) invert(100%) sepia(2%) saturate(325%) hue-rotate(59deg) brightness(115%) contrast(100%);
+}
+
+@media (max-width: 1000px) {
+  .c-toru {
+    display: none;
+  }
 }
 
 .l-main {
@@ -354,6 +362,60 @@
   background-color: var(--color-palette-lred);
 }
 
+.c-subMenu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-palette-lred);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-top: 70px;
+}
+
+.c-subMenu__ul {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.c-subMenu__li {
+  color: #fff;
+  text-decoration: none;
+  width: 300px;
+  border-radius: 10px;
+  padding: 10px 0;
+  text-align: center;
+  border: 1px solid #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.c-subMenu__li:hover {
+  background-color: #fff;
+  font-weight: 600;
+  color: var(--color-palette-lred);
+}
+
 .c-button__min {
   width: 40px;
   height: 40px;
@@ -380,40 +442,55 @@
   height: 20px;
 }
 
+.c-button__mim {
+  width: 100%;
+  height: auto;
+  padding: 10px 0;
+  border-radius: 10px;
+  background-color: var(--color-palette-lred);
+  cursor: pointer;
+  -webkit-animation: cardSurg 0.7s ease-in-out;
+          animation: cardSurg 0.7s ease-in-out;
+  -webkit-box-shadow: 0px 3px 0px 0px var(--color-palette-bred);
+          box-shadow: 0px 3px 0px 0px var(--color-palette-bred);
+  font-weight: 600;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.c-button__mim:active {
+  -webkit-transform: translateY(3px);
+          transform: translateY(3px);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 .c-slider {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  width: 100%;
+  height: 360px;
   -webkit-animation: cardSurg 1s ease-in-out;
           animation: cardSurg 1s ease-in-out;
-}
-
-.c-slider__slide {
-  width: 100%;
-  height: 360px;
-  max-height: 410px;
-}
-
-.c-slider__slide div {
-  width: 100%;
-  min-width: 1200px;
-  height: 360px;
-  margin-top: -367px;
-  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   border-top: 5px solid var(--color-palette-lmag);
   -webkit-box-shadow: inset 0px 4px 200px var(--color-palette-blck);
           box-shadow: inset 0px 4px 200px var(--color-palette-blck);
 }
 
-.c-slider__slide img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
+@media (max-width: 1200px) {
+  .c-slider {
+    height: 30vw;
+    -webkit-box-shadow: inset 0px 4px 150px var(--color-palette-blck);
+            box-shadow: inset 0px 4px 150px var(--color-palette-blck);
+  }
+}
+
+@media (max-width: 700px) {
+  .c-slider {
+    -webkit-box-shadow: inset 0px 4px 50px var(--color-palette-blck);
+            box-shadow: inset 0px 4px 50px var(--color-palette-blck);
+  }
 }
 
 .c-banner {
@@ -732,6 +809,13 @@
   }
 }
 
+@media (max-width: 600px) {
+  .c-title__session {
+    text-align: center;
+    margin-top: 50px;
+  }
+}
+
 .c-text__copy {
   font-style: normal;
   font-weight: 400;
@@ -808,7 +892,7 @@
 }
 
 .c-cardAnime__capa {
-  width: 200px;
+  width: 100%;
   height: 300px;
   border-radius: 10px;
   -o-object-fit: cover;
@@ -836,6 +920,55 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.c-sub {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .c-cardAnime {
+    width: 195px;
+  }
+  .c-cardAnime__capa {
+    height: 280px;
+  }
+}
+
+@media (max-width: 940px) {
+  .c-cardAnime {
+    width: 170px;
+  }
+  .c-cardAnime__capa {
+    height: 250px;
+  }
+}
+
+@media (max-width: 830px) {
+  .c-cardAnime {
+    width: 150px;
+  }
+  .c-cardAnime__capa {
+    height: 210px;
+  }
+}
+
+@media (max-width: 800px) {
+  .c-cardAnime {
+    width: 40vw;
+  }
+  .c-cardAnime__capa {
+    height: 60vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .c-sub {
+    display: block;
+  }
+  .c-sum {
+    display: none;
+  }
 }
 
 @-webkit-keyframes cardSurg {

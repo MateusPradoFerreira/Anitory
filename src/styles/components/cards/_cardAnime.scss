@@ -7,7 +7,7 @@
     animation: cardSurg 0.5s ease-in-out;
 
     &__capa {
-        width: 200px;
+        width: 100%;
         height: 300px;
         border-radius: 10px;
         object-fit: cover;
@@ -34,6 +34,60 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+}
+
+.c-sub {
+    display: none;
+}
+
+@media (max-width: 960px) {
+    .c-cardAnime {
+        width: 195px;
+
+        &__capa {
+            height: 280px;
+        }
+    }
+}
+
+@media (max-width: 940px) {
+    .c-cardAnime {
+        width: 170px;
+
+        &__capa {
+            height: 250px;
+        }
+    }
+}
+
+@media (max-width: 830px) {
+    .c-cardAnime {
+        width: 150px;
+
+        &__capa {
+            height: 210px;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .c-cardAnime {
+        width: 40vw;
+
+        &__capa {
+            height: 60vw;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .c-sub {
+        display: block;
+    }
+
+    .c-sum {
+        display: none;
     }
 }
 

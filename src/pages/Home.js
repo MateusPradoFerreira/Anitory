@@ -13,6 +13,7 @@ import Session from '../components/layouts/Session';
 import SideBar from '../components/layouts/SideBar';
 import GrayContainer from '../containers/GrayContainer';
 import MostWatched from '../components/cards/MostWatched';
+import Button2 from '../components/Button2';
 
 function Home() {
     const setCurrentPath = useSearchStore(state => state.setCurrentPath);
@@ -54,6 +55,28 @@ function Home() {
         <>
             <Slider />
             <Main compClass='__home'>
+                <Session>
+                    {sessionsList.map((session) => (
+                        <div key={session.title}>
+                            <FlexContainer size='100%' display='flex' justify='space-between'>
+                                <h1 className='c-title__session'>{session.title}</h1>
+                                <Link to='/animes' className='c-sum'>
+                                    <Button4x4 activeFunction={() => { setCurrentPath(session.path); window.scroll(0, 0); }} icon={SVGAdd} />
+                                </Link>
+                            </FlexContainer>
+                            <FlexContainer display='flex' size='100%' wrap='wrap' justify='space-between' gap='15px'>
+                                {session.animesList.map((anime) => (
+                                    <CardAnime key={anime.title} id={anime.mal_id} capa={anime.images.jpg.image_url} name={anime.title} genres={anime.genres} />
+                                ))}
+                            </FlexContainer> <br />
+                            <Link to='/animes' className='c-sub'>
+                                <Button2 activeFunction={() => { setCurrentPath(session.path); window.scroll(0, 0); }} icon={SVGAdd}>
+                                    Show Me More
+                                </Button2>
+                            </Link>
+                        </div>
+                    ))}
+                </Session>
                 <SideBar>
                     <GrayContainer>
                         <h2 className='c-title__lateralTitle'> Mais assistidos </h2>
@@ -64,23 +87,6 @@ function Home() {
 
                     </GrayContainer>
                 </SideBar>
-                <Session>
-                    {sessionsList.map((session) => (
-                        <div key={session.title}>
-                            <FlexContainer size='100%' display='flex' justify='space-between'>
-                                <h1 className='c-title__session'>{session.title}</h1>
-                                <Link to='/animes'>
-                                    <Button4x4 activeFunction={() => { setCurrentPath(session.path); window.scroll(0, 0); }} icon={SVGAdd} />
-                                </Link>
-                            </FlexContainer>
-                            <FlexContainer display='flex' size='100%' wrap='wrap' justify='space-between' gap='15px'>
-                                {session.animesList.map((anime) => (
-                                    <CardAnime key={anime.title} id={anime.mal_id} capa={anime.images.jpg.image_url} name={anime.title} genres={anime.genres} />
-                                ))}
-                            </FlexContainer> <br />
-                        </div>
-                    ))}
-                </Session>
             </Main>
         </>
     );

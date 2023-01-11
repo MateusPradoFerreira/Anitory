@@ -3,30 +3,25 @@
 // ================================================================================
 
 .c-slider {
-    display: flex;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    width: 100%;
+    height: 360px;
     animation: cardSurg 1s ease-in-out;
-    
-    &__slide {
-        width: 100%;
-        height: 360px;
-        max-height: 410px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-top: 5px solid var(--color-palette-lmag);
+    box-shadow: inset 0px 4px 200px var(--color-palette-blck);
+}
 
-        div {
-            width: 100%;
-            min-width: 1200px;
-            height: 360px;
-            margin-top: -367px;
-            position: absolute;
-            border-top: 5px solid var(--color-palette-lmag);
-            box-shadow: inset 0px 4px 200px var(--color-palette-blck);
-        }
+@media (max-width: 1200px) {
+    .c-slider {
+        height: 30vw;
+        box-shadow: inset 0px 4px 150px var(--color-palette-blck);
+    }
+}
 
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
+@media (max-width: 700px) {
+    .c-slider {
+        box-shadow: inset 0px 4px 50px var(--color-palette-blck);
     }
 }

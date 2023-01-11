@@ -24,4 +24,24 @@
             height: 20px;
         }
     }
+
+    &__mim {
+        width: 100%;
+        height: auto;
+        padding: 10px 0;
+        border-radius: 10px;
+        background-color: var(--color-palette-lred);
+        cursor: pointer;
+        animation: cardSurg 0.7s ease-in-out;
+        box-shadow: 0px 3px 0px 0px var(--color-palette-bred);
+
+        font-weight: 600;
+        font-size: 14px;
+        color: #ffffff;
+
+        &:active {
+            transform: translateY(3px);
+            box-shadow: none;
+        }
+    }
 }

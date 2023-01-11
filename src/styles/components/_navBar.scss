@@ -66,3 +66,43 @@
         background-color: var(--color-palette-lred);
     }
 }
+
+.c-subMenu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-palette-lred);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 70px;
+
+    &__ul {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 40px;
+    }
+
+    &__li {
+        color: #fff;
+        text-decoration: none;
+        width: 300px;
+        border-radius: 10px;
+        padding: 10px 0;
+        text-align: center;
+        border: 1px solid #fff;
+        font-weight: 600;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #fff;
+            font-weight: 600;
+            color: var(--color-palette-lred);
+        }
+    }
+}

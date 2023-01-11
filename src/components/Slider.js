@@ -3,9 +3,7 @@ import Slide05 from '../assets/img/slide (5).jpg';
 
 function Slider() {
     return (
-        <section className="c-slider">
-            <div className="c-slider__slide"> <img src={Slide05} alt='dada' /> <div></div> </div>
-        </section>
+        <section className="c-slider" style={{ backgroundImage: `url('${Slide05}')` }}>  </section>
     );
 }
 

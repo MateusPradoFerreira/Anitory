@@ -45,3 +45,9 @@
     filter: brightness(0) saturate(100%) invert(100%) sepia(2%) saturate(325%) hue-rotate(59deg) brightness(115%)
         contrast(100%);
 }
+
+@media (max-width: 1000px) {
+    .c-toru {
+        display: none;
+    }
+}
