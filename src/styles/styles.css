@@ -380,6 +380,7 @@
       -ms-flex-direction: column;
           flex-direction: column;
   padding-top: 70px;
+  z-index: 999;
 }
 
 .c-subMenu__ul {

@@ -78,6 +78,7 @@
     align-items: center;
     flex-direction: column;
     padding-top: 70px;
+    z-index: 999;
 
     &__ul {
         list-style: none;
