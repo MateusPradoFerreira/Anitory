@@ -19,10 +19,10 @@ function Footer() {
         <footer className="l-footer">
             <div className="c-redBox">
                 <Container>
-                    <FlexContainer size='100%' display='flex' justify='center' wrap='wrap'>
+                    <div style={{ width: '100$', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
                         <img className="c-mal" src={MyAnimeList} alt="" />
                         <NavBar itensList={NavBarList} />
-                    </FlexContainer>
+                    </div>
                 </Container>
             </div>
             <div className="c-blackBox">
