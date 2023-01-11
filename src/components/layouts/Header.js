@@ -21,10 +21,12 @@ function Header() {
 
     function random() {
         window.location.href = '/anime/random';
+        setIsOpen(false)
     };
 
-    function seach() {
+    function search() {
         window.location.href = '/animes';
+        setIsOpen(false)
     };
 
     if (isOpen) {
@@ -46,7 +48,7 @@ function Header() {
                 <div className="c-sum">
                     <FlexContainer size='135px' display='flex' justify='right' gap='20px'>
                         <Button4x4 activeFunction={random} icon={SVGRandom} />
-                        <Button4x4 activeFunction={seach} icon={SVGSearch} />
+                        <Button4x4 activeFunction={search} icon={SVGSearch} />
                     </FlexContainer>
                 </div>
                 <div className="c-sub">
@@ -60,11 +62,11 @@ function Header() {
                     <Button4x4 activeFunction={() => setIsOpen(!isOpen)} icon={SVGclose} />
                     <ul className="c-subMenu__ul">
                         {NavBarList.map((item) => (
-                            <Link className="c-subMenu__li" key={item.item} to={item.link}><li>{item.item}</li></Link>
+                            <Link className="c-subMenu__li" onClick={() => setIsOpen(false)} key={item.item} to={item.link}><li>{item.item}</li></Link>
                         ))}
 
-                        <li className="c-subMenu__li">Surpreenda Me</li>
-                        <li className="c-subMenu__li">Buscar</li>
+                        <li className="c-subMenu__li" onClick={random}>Surpreenda Me</li>
+                        <li className="c-subMenu__li" onClick={search}>Buscar</li>
                     </ul>
                 </div>
             )}
