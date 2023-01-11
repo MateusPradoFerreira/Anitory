@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 function Header() {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
 
     var NavBarList = [
         { item: 'Home', link: '/' },
