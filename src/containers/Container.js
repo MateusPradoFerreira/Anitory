@@ -17,6 +17,10 @@ export const Container = styled('div', {
                 alignItems: 'center',
                 width: '100%',
                 maxWidth: 860,
+
+                '@mobile': {
+                    display: 'none'
+                }
             },
         },
         borderBottom: {

@@ -3,12 +3,12 @@ import InfoMarker from "../../../components/cards/infoMarker/InfoMarker";
 import { Thumbnail } from "../../../components/generals/thumbnail/Thumbnail";
 import { Title } from "../../../components/generals/title/Title";
 
-function SidebarManga({ data, genres, themes }) {
+function SidebarManga({ data }) {
     return (
-        <Container>
+        <Container css={{ '@mobile': { display: 'flex', flexDirection: 'column', alignItems: 'center' } }}>
             <Thumbnail absolute radii src={data.images.jpg.large_image_url} alt={data.title} />
             <Container css={{ paddingTop: 445 }}>
-                <Container grey css={{ marginTop: 30, }}>
+                <Container grey css={{ marginTop: 30, '@mobile': { width: 300 } }}>
                     <Container>
                         <Title embroidery size={'18'} fontWeight={'lg'} css={{ marginBottom: 15, }}> General information </Title>
                         <InfoMarker marker={'Name'} content={data.title} />

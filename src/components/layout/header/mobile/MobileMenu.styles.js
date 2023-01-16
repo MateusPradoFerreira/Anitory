@@ -15,7 +15,7 @@ export const DialogContentCSS = css({
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: '95vw',
+    width: '85vw',
     maxWidth: 450,
     minHeight: '85vh',
     padding: '50px 30px',

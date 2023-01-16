@@ -17,8 +17,8 @@ function CardCharacter({ role, thumbnail, name, isLoading }) {
     return (
         <div className={CardCharacterAnchorCSS()}>
             <img className={CardCharacterThumbnailCSS()} src={thumbnail} alt={name} />
-            <Text size={'11'} color={'grey'} nowrap>{role}</Text>
-            <Text size={'14'} nowrap>{name}</Text>
+            <Text size={'11'} color={'grey'} nowrap css={{ maxWidth: 200 }}>{role}</Text>
+            <Text size={'14'} nowrap css={{ maxWidth: 200 }}>{name}</Text>
         </div>
     );
 }

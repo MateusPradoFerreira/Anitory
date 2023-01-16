@@ -10,18 +10,18 @@ function SidebarAnime({ data, genres, themes }) {
     }
 
     return (
-        <Container>
+        <Container css={{ '@mobile': { display: 'flex', flexDirection: 'column', alignItems: 'center' } }}>
             <Thumbnail absolute radii src={data.images.jpg.large_image_url} alt={data.title} />
             <Container css={{ paddingTop: 445 }}>
 
                 {data.trailer.url !== null && (
                     <Container>
-                        <Title>Watch The Trailer Now</Title>
+                        <Title css={{ '@mobile': { textAlign: 'center' } }}>Watch The Trailer Now</Title>
                         <Video radii thumb={data.trailer.images.large_image_url} css={{ marginTop: 15, }} onClick={GoToTrailer} />
                     </Container>
                 )}
 
-                <Container grey css={{ marginTop: 30, }}>
+                <Container grey css={{ marginTop: 30, '@mobile': { width: 300 } }}>
                     <Container>
                         <Title embroidery size={'18'} fontWeight={'lg'} css={{ marginBottom: 15, }}> General information </Title>
                         <InfoMarker marker={'Name'} content={data.title} />

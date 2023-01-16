@@ -18,7 +18,6 @@ function Anime() {
   const animeID = params['*'];
   const setCurrentAnimePath = useSearchStore(state => state.setCurrentAnimePath);
   const animePath = useSearchStore(state => state.currentAnimePath);
-  const navigate = useNavigate();
 
   const { data: Data, isLoading, isError } = useAnimeQuery(`/anime/${animeID}`);
 
@@ -49,35 +48,35 @@ function Anime() {
         </Area>
         <Area name={'content'}>
           <Container animeheader>
-            <Container css={{ maxWidth: 600 }}>
+            <Container css={{ maxWidth: 800 }}>
               <Title color={'white'} size={'42'} nowrap fontWeight={'lg'} > {data.title} </Title>
               <Text color={'white'} nowrap css={{ marginTop: 5, }}>{animeGenres}</Text>
             </Container>
           </Container>
-          <Container borderBottom css={{ paddingTop: 225, paddingBottom: 15, display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
+          <Container borderBottom css={{ paddingTop: 225, paddingBottom: 15, display: 'flex', justifyContent: 'space-between', alignItems: 'center', '@mobile': { display: 'none' } }}>
             <Text nowrap> Anitory {'>'} Anime {'>'} {data.title} </Text>
             <Text color={'red'} fontWeight={'lg'}> {data.year} </Text>
           </Container>
 
           <Container>
-            <Title css={{ marginTop: 15 }}> Synopsis </Title>
-            <Text size={'14'} css={{ marginTop: 15 }}> {data.synopsis} </Text>
+            <Title css={{ marginTop: 15, '@mobile': { textAlign: 'center' } }}> Synopsis </Title>
+            <Text size={'14'} css={{ marginTop: 15, '@mobile': { fontSize: 12, textAlign: 'center' } }}> {data.synopsis} </Text>
           </Container>
 
           {data.background !== null && (
             <Container>
-              <Title css={{ marginTop: 15 }}> Background </Title>
-              <Text size={'14'} css={{ marginTop: 15 }}> {data.background} </Text>
+              <Title css={{ marginTop: 15, '@mobile': { textAlign: 'center' } }}> Background </Title>
+              <Text size={'14'} css={{ marginTop: 15, '@mobile': { fontSize: 12, textAlign: 'center' } }}> {data.background} </Text>
             </Container>
           )}
 
           <Container borderBottom css={{ display: 'flex', marginTop: 30, '@mobile': { flexDirection: 'column', border: 'none' } }}>
-            <Button onClick={() => setCurrentAnimePath('/videos')} color={animePath === '/videos' ? 'red' : 'grey'} radii={'top'} style={'text'} css={{ '@mobile': { borderRadius: 10, marginBottom: 5, } }}> videos </Button>
-            <Button onClick={() => setCurrentAnimePath('/characters')} color={animePath === '/characters' ? 'red' : 'grey'} radii={'top'} style={'text'} css={{ '@mobile': { borderRadius: 10, marginBottom: 5, } }}> characters </Button>
-            <Button onClick={() => setCurrentAnimePath('/pictures')} color={animePath === '/pictures' ? 'red' : 'grey'} radii={'top'} style={'text'} css={{ '@mobile': { borderRadius: 10, marginBottom: 5, } }}> pictures </Button>
-            <Button onClick={() => setCurrentAnimePath('/staff')} color={animePath === '/staff' ? 'red' : 'grey'} radii={'top'} style={'text'} css={{ '@mobile': { borderRadius: 10, marginBottom: 5, } }}> staff </Button>
-            <Button onClick={() => setCurrentAnimePath('/recommendations')} color={animePath === '/recommendations' ? 'red' : 'grey'} radii={'top'} style={'text'} css={{ '@mobile': { borderRadius: 10, marginBottom: 5, } }}> recommendations </Button>
-            <Button onClick={() => setCurrentAnimePath('/reviews')} color={animePath === '/reviews' ? 'red' : 'grey'} radii={'top'} style={'text'} css={{ '@mobile': { borderRadius: 10, marginBottom: 5, } }}> reviews </Button>
+            <Button onClick={() => setCurrentAnimePath('/videos')} color={animePath === '/videos' ? 'red' : 'grey'} radii={'top'} style={'text'} css={{ '@mobile': { borderRadius: 10, marginBottom: 5 } }}> videos </Button>
+            <Button onClick={() => setCurrentAnimePath('/characters')} color={animePath === '/characters' ? 'red' : 'grey'} radii={'top'} style={'text'} css={{ '@mobile': { borderRadius: 10, marginBottom: 5 } }}> characters </Button>
+            <Button onClick={() => setCurrentAnimePath('/pictures')} color={animePath === '/pictures' ? 'red' : 'grey'} radii={'top'} style={'text'} css={{ '@mobile': { borderRadius: 10, marginBottom: 5 } }}> pictures </Button>
+            <Button onClick={() => setCurrentAnimePath('/staff')} color={animePath === '/staff' ? 'red' : 'grey'} radii={'top'} style={'text'} css={{ '@mobile': { borderRadius: 10, marginBottom: 5 } }}> staff </Button>
+            <Button onClick={() => setCurrentAnimePath('/recommendations')} color={animePath === '/recommendations' ? 'red' : 'grey'} radii={'top'} style={'text'} css={{ '@mobile': { borderRadius: 10, marginBottom: 5 } }}> recommendations </Button>
+            <Button onClick={() => setCurrentAnimePath('/reviews')} color={animePath === '/reviews' ? 'red' : 'grey'} radii={'top'} style={'text'} css={{ '@mobile': { borderRadius: 10, marginBottom: 5 } }}> reviews </Button>
           </Container>
 
           <AnimePath />
