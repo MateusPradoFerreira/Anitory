@@ -1,10 +1,19 @@
 import create from "zustand";
 
+const INITIAL_STATE = {
+    currentSearch: '',
+    currentPage: 1,
+    currentLimit: 24,
+    currentPath: '/top/anime',
+    currentAnimePath: '/videos',
+    currentMangaPath: '/characters',
+}
+
 const useSearchStore = create(
     (set) => ({
-        currentSearch: '',
+        ...INITIAL_STATE,
         setCurrentSearch: (currentSearch) => {
-            if(currentSearch === '') {
+            if (currentSearch === '') {
                 var path = '/top/anime'
             } else {
                 var path = '/anime'
@@ -15,30 +24,25 @@ const useSearchStore = create(
                 currentPage: 1
             }))
         },
-        currentPage: 1,
         setCurrentPage: (currentPageID) => {
-            set(() => ({
-                currentPage: currentPageID
-            }))
+            set(() => ({ currentPage: currentPageID }))
         },
-        currentLimit: 24,
         setCurrentLimit: (currentLimit) => {
-            set(() => ({
-                currentLimit: currentLimit
-            }))
+            set(() => ({ currentLimit: currentLimit }))
         },
-        currentPath: '/top/anime',
         setCurrentPath: (currentPath) => {
-            set(() => ({
-                currentPath: currentPath
-            }))
+            set(() => ({ currentPath: currentPath }))
         },
-        currentAnimePath: '/videos',
         setCurrentAnimePath: (currentAnimePath) => {
-            set(() => ({
-                currentAnimePath: currentAnimePath
-            }))
-        }
+            set(() => ({ currentAnimePath: currentAnimePath }))
+        },
+        setCurrentMangaPath: (currentMangaPath) => {
+            set(() => ({ currentMangaPath: currentMangaPath }))
+        },
+        clear: () => {
+            set(() => (INITIAL_STATE));
+            sessionStorage.clear(); // or localStorage.clear();
+        },
     })
 )
 

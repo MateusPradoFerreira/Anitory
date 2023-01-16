@@ -8,5 +8,5 @@ async function getFetch(ctx) {
 }
 
 export default function useAnimeQuery(path) {
-    return useQuery(['animeSession', path], getFetch, { cacheTime: 0 });
+    return useQuery(['animeSession', path], getFetch, { cacheTime: 1000 * 60 * 5 }); // 5 minutes
 }

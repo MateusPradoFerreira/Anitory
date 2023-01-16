@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import CardAnime from "../components/cards/cardAnime/CardAnime";
 import Pagination from "../components/generals/pagination/Pagination";
 import SearchBar from "../components/generals/searchBar/SearchBar";
 import { Text } from "../components/generals/text/Text";
@@ -11,18 +10,18 @@ import { Container } from "../containers/Container";
 import useAnimeQuery from "../hooks/useAnimeQuery";
 import useSearchStore from "../store/useSearchStore";
 import LoadingRepeat from "../components/loadingRepeat/LoadingRepeat";
+import CardManga from "../components/cards/cardManga/CardManga";
 
-function Animes() {
+function Mangas() {
     const currentSearch = useSearchStore(state => state.currentSearch);
     const currentPage = useSearchStore(state => state.currentPage);
     const currentLimit = useSearchStore(state => state.currentLimit);
-    const currentPath = useSearchStore(state => state.currentPath);
-    const setCurrentAnimePath = useSearchStore(state => state.setCurrentAnimePath);
+    const setCurrentMangaPath = useSearchStore(state => state.setCurrentMangaPath);
     const setCurrentSearch = useSearchStore(state => state.setCurrentSearch);
     const navigate = useNavigate();
 
-    setCurrentAnimePath('/videos');
-    const { data, isLoading, isError } = useAnimeQuery(`${currentPath}?limit=${currentLimit}&page=${currentPage}&q=${currentSearch}`);
+    setCurrentMangaPath('/characters');
+    const { data, isLoading, isError } = useAnimeQuery(`/manga?limit=${currentLimit}&page=${currentPage}&q=${currentSearch}`);
 
     const date = new Date();
     const year = date.getFullYear();
@@ -55,7 +54,7 @@ function Animes() {
                     {!isLoading && (
                         <>
                             {data.data.map((anime) => (
-                                <CardAnime key={anime.title} id={anime.mal_id} thumbnail={anime.images.jpg.image_url} title={anime.title} genres={anime.genres} />
+                                <CardManga key={anime.title} id={anime.mal_id} thumbnail={anime.images.jpg.image_url} title={anime.title} genres={anime.genres} />
                             ))}
 
                             {data.data.length === 0 && (<Text>No results for your search!</Text>)}
@@ -76,10 +75,10 @@ function Animes() {
 
             </Area>
             <Area name={'sidebar'}>
-                <Sidebar path={'/seasons/2022/fall?limit=16'} title={'Maybe you like'} />
+                <Sidebar path={'/top/manga'} title={'Maybe you like'} />
             </Area>
         </Main>
     );
 }
 
-export default Animes;
+export default Mangas;
