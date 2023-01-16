@@ -30,10 +30,12 @@ export const Main = styled('main', {
         gridTemplateColumns: '300px 860px',
         gridGap: '40px',
 
+        '@tablet': {
+          display: 'block',
+        },
+
         '@mobile': {
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center'
+          display: 'block',
         },
       },
     },
