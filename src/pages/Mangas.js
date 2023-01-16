@@ -42,7 +42,7 @@ function Mangas() {
             <Area name={'content'}>
                 <SearchBar css={{ marginBottom: 15, }} onSubmit={setCurrentSearch} placeholder={'search for your favorite animes'} />
                 <Container css={{ display: 'flex', justifyContent: 'space-between', marginBottom: 15, }}>
-                    <Title> {currentSearch === '' ? 'Search' : 'Results for' + currentSearch} </Title>
+                    <Title> {currentSearch === '' ? 'Search' : 'Results for ' + currentSearch} </Title>
                     <Title> {year} </Title>
                 </Container>
 

@@ -12,7 +12,7 @@ function Home() {
 
   return (
     <>
-      <Banner img={BannerImg} />
+      <Banner img={BannerImg} css={{ '@mobile': { height: 150, } }} />
       <Main home>
         <Area name={'content'}>
           <Content />

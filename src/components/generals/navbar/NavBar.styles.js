@@ -4,6 +4,16 @@ export const NavBarlistCSS = styled('ul', {
   display: 'flex',
   listStyle: 'none',
   gap: 45,
+
+  variants: {
+    vertical: {
+      true: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: 15
+      }
+    }
+  }
 });
 
 export const navBarAnchorCSS = css({

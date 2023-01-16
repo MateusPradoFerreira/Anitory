@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import { navBarAnchorCSS, NavBarlistCSS, navBarAnchorWhiteCSS } from './NavBar.styles';
 
-function NavBar({ navList, normalAnchor, white }) {
+function NavBar({ navList, normalAnchor, white, vertical, css }) {
   if (normalAnchor) {
     return (
       <nav>
-        <NavBarlistCSS>
+        <NavBarlistCSS vertical={vertical} css={{ ...css }}>
           {navList.map((item) => (
             <a key={item.name} href={item.href} className={white ? navBarAnchorWhiteCSS() : navBarAnchorCSS()}>
               <li>{item.name}</li>
@@ -18,7 +18,7 @@ function NavBar({ navList, normalAnchor, white }) {
 
   return (
     <nav>
-      <NavBarlistCSS>
+      <NavBarlistCSS vertical={vertical} css={{ ...css }}>
         {navList.map((item) => (
           <Link key={item.name} to={item.href} className={navBarAnchorCSS()}>
             <li>{item.name}</li>
