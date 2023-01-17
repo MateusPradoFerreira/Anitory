@@ -7,10 +7,10 @@ import CardAnime from "../../../components/cards/cardAnime/CardAnime";
 import SVGadd from "../../../assets/svgs/add.svg";
 import LoadingRepeat from "../../../components/loadingRepeat/LoadingRepeat";
 import useAnimeQuery from "../../../hooks/useAnimeQuery";
-import useSearchStore from "../../../store/useSearchStore";
+import useAnimeStore from "../../../store/useAnimeStore";
 
 function Content() {
-    const setCurrentPath = useSearchStore(state => state.setCurrentPath);
+    const setSearchPath = useAnimeStore(state => state.setSearchPath);
     const navigate = useNavigate();
 
     const { data: data01, isLoading: isLoading01, isError: isError01 } = useAnimeQuery('/seasons/now?limit=4');
@@ -33,7 +33,7 @@ function Content() {
                 <Container key={session.title}>
                     <Container css={{ display: 'flex', justifyContent: 'space-between', marginBottom: 15, }}>
                         <Title nowrap>{session.title}</Title>
-                        <Button radii style={'icon'} onClick={() => { navigate('/animes'); setCurrentPath(session.path); window.scroll(0, 0); }}>
+                        <Button radii style={'icon'} onClick={() => { navigate('/animes'); setSearchPath(session.path); window.scroll(0, 0); }}>
                             <img src={SVGadd} alt={'add icon'} />
                         </Button>
                     </Container>

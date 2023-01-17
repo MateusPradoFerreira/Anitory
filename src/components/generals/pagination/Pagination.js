@@ -1,10 +1,10 @@
-import useSearchStore from "../../../store/useSearchStore";
+import useAnimeStore from "../../../store/useAnimeStore";
 import { PaginationButton, PaginationContainer } from "./Pagination.styles";
 
 
 function Pagination({ css, totalCount, pageSize, siblingCount, lastPage }) {
-    const setCurrentPage = useSearchStore((state) => state.setCurrentPage);
-    const currentPage = useSearchStore((state) => state.currentPage);
+    const setCurrentPage = useAnimeStore((state) => state.setCurrentPage);
+    const currentPage = useAnimeStore((state) => state.currentPage);
     var Nbuttons = Math.ceil(totalCount / pageSize);
     const buttons = [];
     var i = 1;

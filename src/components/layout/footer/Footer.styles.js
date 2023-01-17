@@ -11,6 +11,10 @@ export const FooterBlackAreaCSS = css({
     height: 40,
     display: 'flex',
     alignItems: 'center',
+
+    '@tablet': {
+        paddingLeft: 20
+    }
 })
 
 export const FooterMalIMGCSS = css({
@@ -23,4 +27,8 @@ export const FooterMalIMGCSS = css({
 export const FooterTohruIMGCSS = css({
     width: 227,
     height: 224,
+
+    '@mobile': {
+        display: 'none',
+    }
 })

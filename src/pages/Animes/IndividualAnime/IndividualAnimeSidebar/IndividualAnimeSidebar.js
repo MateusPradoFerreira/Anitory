@@ -1,10 +1,10 @@
-import { Container } from "../../../containers/Container";
-import InfoMarker from "../../../components/cards/infoMarker/InfoMarker";
-import Video from "../../../components/cards/video/Video";
-import { Thumbnail } from "../../../components/generals/thumbnail/Thumbnail";
-import { Title } from "../../../components/generals/title/Title";
+import { Container } from "../../../../containers/Container";
+import InfoMarker from "../../../../components/cards/infoMarker/InfoMarker";
+import Video from "../../../../components/cards/video/Video";
+import { Thumbnail } from "../../../../components/generals/thumbnail/Thumbnail";
+import { Title } from "../../../../components/generals/title/Title";
 
-function SidebarAnime({ data, genres, themes }) {
+function IndividualAnimeSidebar({ data, genres, themes }) {
     function GoToTrailer() {
         window.open(data.trailer.url, "_blank")
     }
@@ -60,4 +60,4 @@ function SidebarAnime({ data, genres, themes }) {
     );
 }
 
-export default SidebarAnime;
+export default IndividualAnimeSidebar;

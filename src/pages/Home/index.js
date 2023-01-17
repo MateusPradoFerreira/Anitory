@@ -1,13 +1,13 @@
-import useSearchStore from "../../store/useSearchStore";
 import { Main } from "../../components/layout/main/Main";
 import Banner from "../../components/generals/banner/Banner";
 import BannerImg from "../../assets/images/Banner.jpg";
 import Area from "../../containers/area/Area";
 import Sidebar from "../../components/layout/sidebar/Sidebar";
 import Content from "./content/Content";
+import useAnimeStore from "../../store/useAnimeStore";
 
 function Home() {
-  const clear = useSearchStore(state => state.clear);
+  const clear = useAnimeStore(state => state.clear);
   clear();
 
   return (

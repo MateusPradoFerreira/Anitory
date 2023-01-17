@@ -18,7 +18,7 @@ function CardAnime({ id, genres, thumbnail, title, isLoading }) {
     genres = formatNameList(genres);
     genres = genres === '' ? 'Gênero indefinido' : genres;
     return (
-        <Link to={'/anime/' + id} onClick={() => { window.scroll(0, 0) }} className={CardAnimeAnchorCSS()}>
+        <Link to={'/animes/' + id} onClick={() => { window.scroll(0, 0) }} className={CardAnimeAnchorCSS()}>
             <img className={CardAnimeThumbnailCSS()} src={thumbnail} alt={title} />
             <Text size={'11'} color={'grey'} nowrap>{genres}</Text>
             <Text size={'14'} nowrap css={{ maxWidth: 200 }}>{title}</Text>
