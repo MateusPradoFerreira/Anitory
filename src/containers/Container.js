@@ -15,10 +15,10 @@ export const Container = styled('div', {
                 position: 'absolute',
                 display: 'flex',
                 alignItems: 'center',
-                width: '100%',
-                maxWidth: 860,
+                width: 'calc(100% - 380px)',
+                maxWidth: 800,
 
-                '@mobile': {
+                '@iPad': {
                     display: 'none'
                 }
             },

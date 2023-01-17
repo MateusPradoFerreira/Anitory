@@ -31,6 +31,10 @@ export const Main = styled('main', {
         gridGap: '40px',
 
         '@tablet': {
+          gridTemplateColumns: '300px calc(100% - 340px)',
+        },
+
+        '@iPad': {
           display: 'block',
         },
 

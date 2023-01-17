@@ -26,7 +26,14 @@ function Header() {
 
   return (
     <header>
-      <Container css={{ layout: 1200, padding: '15px 0px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', '@tablet': { padding: '15px 20px', } }} >
+      <Container css={{
+        layout: 1200,
+        padding: '15px 0px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        '@tablet': { padding: '15px 20px', }
+      }} >
         <Logo>Anitory</Logo>
 
         <Container css={{ display: 'block', '@mobile': { display: 'none' } }}>

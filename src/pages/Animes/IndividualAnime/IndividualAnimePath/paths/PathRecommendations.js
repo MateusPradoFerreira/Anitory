@@ -4,7 +4,15 @@ import { Container } from "../../../../../containers/Container";
 
 function PathRecommendations({ data }) {
     return (
-        <Container css={{ display: 'flex', justifyContent: 'left', flexWrap: 'wrap', gap: 15, marginTop: 15, '@mobile': { justifyContent: 'center' } }}>
+        <Container css={{
+            display: 'flex',
+            justifyContent: 'left',
+            flexWrap: 'wrap',
+            gap: 20,
+            marginTop: 15,
+            '@tablet': { justifyContent: 'space-between' },
+            '@mobile': { justifyContent: 'center' },
+        }}>
             {data.data.map((anime) => (
                 <CardAnime
                     key={anime.entry.title}

@@ -6,11 +6,6 @@ export const Thumbnail = styled('img', {
     objectFit: 'cover',
 
     variants: {
-        absolute: {
-            true: {
-                position: 'absolute',
-            },
-        },
         radii: {
             true: {
                 borderRadius: 10,

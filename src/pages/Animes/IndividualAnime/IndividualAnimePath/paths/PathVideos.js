@@ -4,7 +4,15 @@ import { Container } from "../../../../../containers/Container";
 
 function PathVideos({ data }) {
     return (
-        <Container css={{ display: 'flex', justifyContent: 'left', flexWrap: 'wrap', gap: 20, marginTop: 15, '@mobile': { justifyContent: 'center' } }}>
+        <Container css={{
+            display: 'flex',
+            justifyContent: 'left',
+            flexWrap: 'wrap',
+            gap: 20,
+            marginTop: 15,
+            '@tablet': { justifyContent: 'space-between' },
+            '@mobile': { justifyContent: 'center' },
+        }}>
             {data.data.episodes.map((episode) => (
                 <Container key={episode.title} css={{ width: 200, '@mobile': { width: '100%' } }}>
                     <a href={episode.url} target='_blank'>

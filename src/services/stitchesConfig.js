@@ -43,6 +43,7 @@ export const { css, styled } = createStitches({
   media: {
     'mobile': '(max-width: 640px)',
     'tablet': '(max-width: 1200px)',
+    'iPad': '(max-width: 950px)',
     'desktop': '(max-width: 1440px)',
   },
 });
