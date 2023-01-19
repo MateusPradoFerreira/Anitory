@@ -13,7 +13,7 @@ export const Main = styled('main', {
       true: {
         marginTop: 25,
         display: 'grid',
-        gridTemplateAreas: 'content sidebar',
+        gridTemplateAreas: 'sidebar content ',
         gridTemplateColumns: '845px 1fr',
         gridGap: '20px',
 
@@ -22,7 +22,7 @@ export const Main = styled('main', {
         },
       },
     },
-    anime: {
+    individualAnimeManga: {
       true: {
         marginTop: -200,
         display: 'grid',

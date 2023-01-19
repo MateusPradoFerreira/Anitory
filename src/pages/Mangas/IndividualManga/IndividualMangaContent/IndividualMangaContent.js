@@ -2,7 +2,7 @@ import { Container } from "../../../../containers/Container";
 import { Title } from "../../../../components/generals/title/Title";
 import { Text } from "../../../../components/generals/text/Text";
 
-function IndividualAnimeContent({ data, genres }) {
+function IndividualMangaContent({ data, genres }) {
     return (
         <>
             <Container animeheader>
@@ -20,7 +20,7 @@ function IndividualAnimeContent({ data, genres }) {
                 '@iPad': { padding: '30px 0 15px 0' },
                 '@mobile': { display: 'none' },
             }}>
-                <Text nowrap> Anitory {'>'} Animes {'>'} {data.title} </Text>
+                <Text nowrap> Anitory {'>'} Mangas {'>'} {data.title} </Text>
                 <Text color={'red'} fontWeight={'lg'}> {data.year} </Text>
             </Container>
 
@@ -40,4 +40,4 @@ function IndividualAnimeContent({ data, genres }) {
     );
 }
 
-export default IndividualAnimeContent;
+export default IndividualMangaContent;

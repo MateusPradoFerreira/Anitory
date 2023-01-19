@@ -18,7 +18,7 @@ function CardManga({ id, genres, thumbnail, title, isLoading }) {
     genres = formatNameList(genres);
     genres = genres === '' ? 'Gênero indefinido' : genres;
     return (
-        <Link to={'/manga/' + id} onClick={() => { window.scroll(0, 0) }} className={CardMangaAnchorCSS()}>
+        <Link to={'/mangas/' + id} onClick={() => { window.scroll(0, 0) }} className={CardMangaAnchorCSS()}>
             <img className={CardMangaThumbnailCSS()} src={thumbnail} alt={title} />
             <Text size={'11'} color={'grey'} nowrap>{genres}</Text>
             <Text size={'14'} nowrap>{title}</Text>

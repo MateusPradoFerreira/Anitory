@@ -5,23 +5,17 @@ import formatNameList from '../../../utils/formatNameList';
 import Banner from "../../../components/generals/banner/Banner";
 import { Hidder } from "../../../components/generals/hidder/Hidder";
 import Area from "../../../containers/area/Area";
-import IndividualAnimeSidebar from "./IndividualAnimeSidebar/IndividualAnimeSidebar";
-import IndividualAnimePath from "./IndividualAnimePath/IndividualAnimePath";
-import IndividualAnimeMenu from "./IndividualAnimeMenu/IndividualAnimeMenu";
-import IndividualAnimeContent from "./IndividualAnimeContent/IndividualAnimeContent";
+import IndividualMangaSidebar from "./IndividualMangaSidebar/IndividualMangaSidebar";
+import IndividualMangaPath from "./IndividualMangaPath/IndividualMangaPath";
+import IndividualMangaMenu from "./IndividualMangaMenu/IndividualMangaMenu";
+import IndividualMangaContent from "./IndividualMangaContent/IndividualMangaContent";
 import { Container } from "../../../containers/Container";
-import Video from "../../../components/cards/video/Video";
-import { Title } from "../../../components/generals/title/Title";
 import { Thumbnail } from "../../../components/generals/thumbnail/Thumbnail";
 
-function IndividualAnime() {
+function IndividualManga() {
   const { id } = useParams();
 
-  const { data: Data, isLoading, isError } = useAnimeQuery(`/anime/${id}`);
-
-  function GoToTrailer() {
-    window.open(data.trailer.url, "_blank")
-  }
+  const { data: Data, isLoading, isError } = useAnimeQuery(`/manga/${id}`);
 
   if (isError || Data?.status) {
     return (
@@ -51,19 +45,8 @@ function IndividualAnime() {
               <Thumbnail radii src={data.images.jpg.large_image_url} alt={data.title} />
             </Container>
 
-            <Container css={{ paddingTop: 450 }}>
-              {data.trailer.url !== null && (
-                <>
-                  <Title css={{ '@mobile': { textAlign: 'center' } }}>Watch The Trailer Now</Title>
-                  <Video
-                    radii
-                    thumb={data.trailer.images.large_image_url}
-                    css={{ marginTop: 15, }}
-                    onClick={GoToTrailer}
-                  />
-                </>
-              )}
-              <IndividualAnimeSidebar data={data} genres={genres} themes={themes} />
+            <Container css={{ paddingTop: 430 }}>
+              <IndividualMangaSidebar data={data} genres={genres} themes={themes} />
             </Container>
 
           </Container>
@@ -71,11 +54,11 @@ function IndividualAnime() {
         </Area>
         <Area name={'content'}>
 
-          <IndividualAnimeContent data={data} genres={genres} />
-          <IndividualAnimeMenu />
+          <IndividualMangaContent data={data} genres={genres} />
+          <IndividualMangaMenu />
 
           <Container css={{ minHeight: 200, }}>
-            <IndividualAnimePath />
+            <IndividualMangaPath />
           </Container>
         </Area>
       </Main>
@@ -83,4 +66,4 @@ function IndividualAnime() {
   );
 }
 
-export default IndividualAnime;
+export default IndividualManga;
