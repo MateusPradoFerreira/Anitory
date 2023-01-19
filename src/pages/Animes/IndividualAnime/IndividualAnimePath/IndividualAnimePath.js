@@ -29,7 +29,6 @@ function IndividualAnimePath() {
     if (individualPath === '/pictures') { return <PathPictures data={data} /> }
     if (individualPath === '/staff') { return <PathStaff data={data} /> }
     if (individualPath === '/recommendations') { return <PathRecommendations data={data} /> }
-    if (individualPath === '/reviews') { return <></> }
 
 }
 

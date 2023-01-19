@@ -12,7 +12,6 @@ function IndividualAnimeMenu() {
         'pictures',
         'recommendations',
         'staff',
-        'reviews',
     ]
 
     return (
