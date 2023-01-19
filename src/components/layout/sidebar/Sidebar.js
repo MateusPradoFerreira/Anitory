@@ -35,7 +35,7 @@ function Sidebar({ path, title }) {
             <Title css={{ marginBottom: 20 }} embroidery size={'18'} fontWeight={'lg'}>{title}</Title>
             <Container css={{ display: 'flex', flexDirection: 'column', gap: 15 }}>
                 {data?.data.map((anime) => (
-                    <SideAnime key={anime.mal_id} onClick={() => navigate(`/anime/${anime.mal_id}`)} thumbnail={anime.images.jpg.image_url} title={anime.title} genres={anime.genres} score={anime.score} />
+                    <SideAnime key={anime.mal_id} onClick={() => navigate(`/animes/${anime.mal_id}`)} thumbnail={anime.images.jpg.image_url} title={anime.title} genres={anime.genres} score={anime.score} />
                 ))}
             </Container>
         </Container>
