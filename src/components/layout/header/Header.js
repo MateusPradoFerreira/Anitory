@@ -20,7 +20,7 @@ function Header() {
   async function random() {
     const { data } = await API.get('/random/anime');
     if (data?.data.mal_id !== undefined) {
-      navigate(`/anime/${data.data.mal_id}`)
+      navigate(`/animes/${data.data.mal_id}`)
     }
   }
 
