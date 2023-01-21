@@ -9,6 +9,20 @@ export const globalStyles = globalCss({
     boxSizing: "border-box",
     fontFamily: "$Poppins",
   },
+
+  '::-webkit-scrollbar-track': {
+    backgroundColor: '#f5f5f5',
+  },
+
+  '::-webkit-scrollbar': {
+    width: 10,
+    backgroundColor: '#f5f5f5',
+  },
+
+  '::-webkit-scrollbar-thumb': {
+    backgroundColor: '#f44336',
+    borderRadius: 0,
+  }
 });
 
 export const { css, styled } = createStitches({
