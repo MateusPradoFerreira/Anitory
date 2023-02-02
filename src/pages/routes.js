@@ -4,6 +4,7 @@ import Animes from './Animes'
 import IndividualAnime from './Animes/IndividualAnime'
 import Mangas from './Mangas'
 import IndividualManga from './Mangas/IndividualManga'
+import About from './About';
 
 export const MainRoutes = () => {
     return (
@@ -13,6 +14,7 @@ export const MainRoutes = () => {
             <Route path="/animes/:id" element={<IndividualAnime />} />
             <Route path="/mangas" element={<Mangas />} />
             <Route path="/mangas/:id" element={<IndividualManga />} />
+            <Route path="/about" element={<About />} />
         </Routes>
     );
 };

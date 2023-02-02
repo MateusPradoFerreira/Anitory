@@ -11,6 +11,7 @@ var navBarList = [
     { name: 'Home', href: '/' },
     { name: 'Animes', href: '/animes' },
     { name: 'Mangas', href: '/mangas' },
+    { name: 'About', href: '/about' },
 ];
 
 const MobileMenu = () => (
