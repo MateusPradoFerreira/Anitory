@@ -1,4 +1,4 @@
-import { css } from "../../../../services/stitchesConfig";
+import { css, styled } from "../../../../services/stitchesConfig";
 
 export const DialogOverlayCSS = css({
     backgroundColor: 'rgba(23, 23, 23, 0.38)',
@@ -17,7 +17,22 @@ export const DialogContentCSS = css({
     transform: 'translate(-50%, -50%)',
     width: '85vw',
     maxWidth: 450,
-    minHeight: '85vh',
     padding: '50px 30px',
     zIndex: 999,
+})
+
+export const List = styled('ul', {
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'column',
+    gap: 10,
+    marginTop: 30,
+})
+
+export const MobileNavItem = styled('button', {
+    padding: 10,
+    width: '100%',
+    backgroundColor: 'transparent',
+    border: 'none',
+    outline: 'none',
 })

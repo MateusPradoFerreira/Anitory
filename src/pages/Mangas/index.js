@@ -30,7 +30,7 @@ function Manga() {
     return (
         <Main home>
             <Area name={'content'}>
-                <SearchBar css={{ marginBottom: 15, }} onSubmit={setSearch} placeholder={'search for your favorite manga'} />
+                <SearchBar css={{ marginBottom: 15, }} onSubmit={setSearch} placeholder={'search for your favorite mangas'} />
                 <Container css={{ display: 'flex', justifyContent: 'space-between', marginBottom: 15, }}>
                     <Title> {search === '' ? 'Search' : 'Results for ' + search} </Title>
                     <Title> {year} </Title>
