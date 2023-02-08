@@ -1,5 +1,5 @@
 import { Main } from "../../../components/layout/main/Main";
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useAnimeQuery from '../../../hooks/useAnimeQuery';
 import formatNameList from '../../../utils/formatNameList';
 import Banner from "../../../components/generals/banner/Banner";
@@ -11,21 +11,25 @@ import IndividualMangaMenu from "./IndividualMangaMenu/IndividualMangaMenu";
 import IndividualMangaContent from "./IndividualMangaContent/IndividualMangaContent";
 import { Container } from "../../../containers/Container";
 import { Thumbnail } from "../../../components/generals/thumbnail/Thumbnail";
+import LoadingImage from "../../../assets/images/loading.gif";
 
 function IndividualManga() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const { data: Data, isLoading, isError } = useAnimeQuery(`/manga/${id}`);
 
   if (isError || Data?.status) {
-    return (
-      <Main>error...</Main>
-    );
+    navigate('/404');
   }
 
   if (isLoading) {
     return (
-      <Main>loading...</Main>
+      <Main>
+        <Container css={{ display: 'flex', justifyContent: 'center', img: { width: 200 } }}>
+          <img src={LoadingImage} alt={'loading gif'} />
+        </Container>
+      </Main>
     );
   }
 

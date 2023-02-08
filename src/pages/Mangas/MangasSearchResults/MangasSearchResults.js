@@ -1,5 +1,5 @@
 import CardManga from "../../../components/cards/cardManga/CardManga";
-import Pagination from "../../../components/generals/pagination/Pagination";
+import Pagination from "../../../components/generals/paginationManga/Pagination";
 import { Text } from "../../../components/generals/text/Text";
 import LoadingRepeat from "../../../components/loadingRepeat/LoadingRepeat";
 import { Container } from "../../../containers/Container";

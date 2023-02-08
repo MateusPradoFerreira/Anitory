@@ -48,6 +48,12 @@ export const Title = styled('h1', {
                 borderBottom: '2px solid #9C9C9C',
             },
         },
+        border: {
+            true: {
+                paddingLeft: 15,
+                borderLeft: '5px solid $red300'
+            }
+        },
     },
 
     defaultVariants: {
@@ -55,5 +61,6 @@ export const Title = styled('h1', {
         size: '24',
         nowrap: false,
         fontWeight: 'md',
+        border: false,
     }
 })

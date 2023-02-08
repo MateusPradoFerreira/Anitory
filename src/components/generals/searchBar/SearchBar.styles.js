@@ -7,6 +7,7 @@ export const SearchBarForm = styled('form', {
     padding: '7px 10px',
     borderRadius: 10,
     border: '2px solid $red300',
+    width: '100%',
 
     'input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, textarea:-webkit-autofill, textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus, select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus': {
         '-webkit-text-fill-color': 'black !important',

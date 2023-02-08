@@ -1,6 +1,6 @@
 import { Main } from "../../components/layout/main/Main";
 import Banner from "../../components/generals/banner/Banner";
-import BannerImg from "../../assets/images/Banner.jpg";
+import BannerImg from "../../assets/images/Banner.png";
 import Area from "../../containers/area/Area";
 import Sidebar from "../../components/layout/sidebar/Sidebar";
 import Content from "./content/Content";
@@ -12,7 +12,7 @@ function Home() {
 
   return (
     <>
-      <Banner img={BannerImg} css={{ '@mobile': { height: 150, } }} />
+      <Banner noShadow img={BannerImg} css={{ '@mobile': { height: 150, } }} />
       <Main home>
         <Area name={'content'}>
           <Content />

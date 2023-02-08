@@ -1,5 +1,5 @@
 import { Main } from "../../../components/layout/main/Main";
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useAnimeQuery from '../../../hooks/useAnimeQuery';
 import formatNameList from '../../../utils/formatNameList';
 import Banner from "../../../components/generals/banner/Banner";
@@ -13,9 +13,11 @@ import { Container } from "../../../containers/Container";
 import Video from "../../../components/cards/video/Video";
 import { Title } from "../../../components/generals/title/Title";
 import { Thumbnail } from "../../../components/generals/thumbnail/Thumbnail";
+import LoadingImage from "../../../assets/images/loading.gif";
 
 function IndividualAnime() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const { data: Data, isLoading, isError } = useAnimeQuery(`/anime/${id}`);
 
@@ -24,14 +26,16 @@ function IndividualAnime() {
   }
 
   if (isError || Data?.status) {
-    return (
-      <Main>error...</Main>
-    );
+    navigate('/404');
   }
 
   if (isLoading) {
     return (
-      <Main>loading...</Main>
+      <Main>
+        <Container css={{ display: 'flex', justifyContent: 'center', img: { width: 200 } }}>
+          <img src={LoadingImage} alt={'loading gif'} />
+        </Container>
+      </Main>
     );
   }
 

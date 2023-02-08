@@ -5,6 +5,7 @@ const INITIAL_STATE = {
     currentPage: 1,
     searchPath: '/top/anime',
     individualPath: '/videos',
+    rating: 'g',
 }
 
 const useAnimeStore = create(
@@ -27,6 +28,15 @@ const useAnimeStore = create(
         },
         setIndividualPath: (individualPath) => {
             set(() => ({ individualPath: individualPath }))
+        },
+        setRating: (rating) => {
+            if (rating === '') { var path = '/top/anime' }
+            else { var path = '/anime' }
+            set(() => ({
+                rating: rating,
+                currentPage: 1,
+                searchPath: path,
+            }))
         },
         clear: () => {
             set(() => (INITIAL_STATE));

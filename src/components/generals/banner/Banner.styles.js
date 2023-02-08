@@ -25,5 +25,10 @@ export const BannerCSS = styled('div', {
                 backgroundPositionY: 'top',
             },
         },
+        noShadow: {
+            true: {
+                boxShadow: 'none',
+            },
+        },
     },
 });
