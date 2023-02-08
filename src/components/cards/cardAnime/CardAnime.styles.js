@@ -7,7 +7,7 @@ export const CardAnimeThumbnailCSS = css({
     objectFit: 'cover',
 
     '@mobile': {
-        height: '55vw',
+        height: '40vw',
     }
 })
 
@@ -17,8 +17,8 @@ export const CardAnimeAnchorCSS = css({
     height: 355,
 
     '@mobile': {
-        width: '46%',
-        height: '65vw',
+        width: '30%',
+        height: '50vw',
 
         '&:focus-visible': {
             borderRadius: 5,

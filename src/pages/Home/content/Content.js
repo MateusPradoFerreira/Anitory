@@ -13,8 +13,11 @@ function Content() {
     const setSearchPath = useAnimeStore(state => state.setSearchPath);
     const navigate = useNavigate();
 
-    const { data: data01, isLoading: isLoading01, isError: isError01 } = useAnimeQuery('/seasons/now?limit=4');
-    const { data: data02, isLoading: isLoading02, isError: isError02 } = useAnimeQuery('/seasons/upcoming?limit=8');
+    const screenWidth = window.screen.width;
+    console.log(screenWidth)
+
+    const { data: data01, isLoading: isLoading01, isError: isError01 } = useAnimeQuery('/seasons/now?limit=' + (screenWidth > 640 ? '4' : '3'));
+    const { data: data02, isLoading: isLoading02, isError: isError02 } = useAnimeQuery('/seasons/upcoming?limit=' + (screenWidth > 640 ? '8' : '9'));
     const { data: data03, isLoading: isLoading03, isError: isError03 } = useAnimeQuery('/seasons/2022/winter?limit=24');
 
     const sessionsList = [
@@ -46,7 +49,7 @@ function Content() {
                         </Container>
                     ) : (
                         <Container css={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 15, marginBottom: 40, }}>
-                            <LoadingRepeat number={4} />
+                            <LoadingRepeat number={screenWidth > 640 ? 4 : 3} />
                         </Container>
                     )}
 

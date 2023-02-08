@@ -8,7 +8,7 @@ function CardAnime({ id, genres, thumbnail, title, isLoading }) {
     if (isLoading) {
         return (
             <div className={CardAnimeAnchorCSS()}>
-                <Loading radii width={'100%'} css={{ height: 300, '@mobile': { height: '55vw', } }} />
+                <Loading radii width={'100%'} css={{ height: 300, '@mobile': { height: '40vw', } }} />
                 <Loading radii width={'100%'} height={10} css={{ marginTop: 5 }} />
                 <Loading radii width={'100%'} height={20} css={{ marginTop: 5 }} />
             </div>
@@ -20,8 +20,8 @@ function CardAnime({ id, genres, thumbnail, title, isLoading }) {
     return (
         <Link to={'/animes/' + id} onClick={() => { window.scroll(0, 0) }} className={CardAnimeAnchorCSS()}>
             <img className={CardAnimeThumbnailCSS()} src={thumbnail} alt={title} />
-            <Text size={'11'} color={'grey'} nowrap>{genres}</Text>
-            <Text size={'14'} nowrap css={{ maxWidth: 200 }}>{title}</Text>
+            <Text css={{ '@mobile': { fontSize: 9 } }} size={'11'} color={'grey'} nowrap>{genres}</Text>
+            <Text css={{ '@mobile': { fontSize: 11 }, maxWidth: 200 }} size={'14'} nowrap>{title}</Text>
         </Link>
     );
 }
