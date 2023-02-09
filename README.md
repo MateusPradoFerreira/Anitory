@@ -2,7 +2,7 @@
 <hr>
 
 ![GPLv3 License](https://img.shields.io/badge/License-GNU%20v3-yellow.svg)
-![GPLv3 License](https://img.shields.io/badge/maven%20central-GPL%20v2.0-blue.svg)
+![GPLv3 License](https://img.shields.io/badge/maven%20central-v2.0-blue.svg)
 ![Release Date](https://img.shields.io/badge/release%20date-%20february-red.svg)
 
 
