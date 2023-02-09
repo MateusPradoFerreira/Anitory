@@ -8,6 +8,10 @@ export const LogoAnchorCSS = css({
   textDecoration: 'none',
   outline: 'none',
 
+  img: {
+    width: 100
+  },
+
   '&:focus-visible': {
     border: 'none',
     color: '$red700',

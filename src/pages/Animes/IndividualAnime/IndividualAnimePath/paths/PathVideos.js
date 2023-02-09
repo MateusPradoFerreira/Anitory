@@ -13,7 +13,7 @@ function PathVideos({ data }) {
             '@tablet': { justifyContent: 'space-between' },
             '@mobile': { justifyContent: 'center' },
         }}>
-            {data.data.episodes.map((episode) => (
+            {data?.data?.episodes?.map((episode) => (
                 <Container key={episode.title} css={{ width: 200, '@mobile': { width: '100%' } }}>
                     <a href={episode.url} target='_blank'>
                         <Video t
@@ -26,7 +26,7 @@ function PathVideos({ data }) {
                     <Text css={{ marginTop: 5, }} nowrap>{episode.episode}</Text>
                 </Container>
             ))}
-            {data.data.promo.map((promo) => (
+            {data?.data?.promo?.map((promo) => (
                 <Container key={promo.title} css={{ width: 200, '@mobile': { width: '100%' } }}>
                     <a href={promo.trailer.url} target='_blank'>
                         <Video thumb={promo.trailer.images.small_image_url}

@@ -34,8 +34,8 @@ function Content() {
         <>
             {sessionsList.map((session) => (
                 <Container key={session.title}>
-                    <Container css={{ display: 'flex', justifyContent: 'space-between', marginBottom: 15, }}>
-                        <Title nowrap border>{session.title}</Title>
+                    <Container css={{ display: 'flex', justifyContent: 'space-between', marginBottom: 15, alignItems: 'center' }}>
+                        <Title nowrap border css={{ '@mobile': { fontSize: 18 }, height: 'fit-content' }}>{session.title}</Title>
                         <Button radii style={'icon'} onClick={() => { navigate('/animes'); setSearchPath(session.path); window.scroll(0, 0); }}>
                             <img src={SVGadd} alt={'add icon'} />
                         </Button>

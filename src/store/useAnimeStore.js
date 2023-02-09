@@ -6,6 +6,8 @@ const INITIAL_STATE = {
     searchPath: '/top/anime',
     individualPath: '/videos',
     rating: 'g',
+    orderBy: '',
+    sort: 'desc',
 }
 
 const useAnimeStore = create(
@@ -36,6 +38,25 @@ const useAnimeStore = create(
                 rating: rating,
                 currentPage: 1,
                 searchPath: path,
+            }))
+        },
+        setOrderBy: (orderBy) => {
+            if (orderBy === '') { var path = '/top/anime' }
+            else { var path = '/anime' }
+
+            var sort = 'desc'
+
+            switch (orderBy) {
+                case "title":
+                case "rank":
+                    sort = 'asc'
+            }
+
+            set(() => ({
+                orderBy: orderBy,
+                currentPage: 1,
+                searchPath: path,
+                sort: sort,
             }))
         },
         clear: () => {

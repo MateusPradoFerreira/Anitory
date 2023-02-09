@@ -19,6 +19,11 @@ export const Description = styled('p', {
     fontWeight: 400,
     color: '$grey900',
 
+    a: {
+        color: '$red300',
+        fontWeight: 600,
+    },
+
     '@mobile': {
         fontSize: 14,
     }
@@ -77,3 +82,40 @@ export const IconCSS = css({
 export const Icon = () => (
     <RiLinksLine className={IconCSS()} />
 )
+
+export const ProjectsContainer = styled('div', {
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+    marginTop: 60,
+})
+
+export const Project = styled('a', {
+    width: 380,
+    textDecoration: 'none',
+    color: '$grey900',
+    marginBottom: 30,
+})
+
+export const ProjectTitle = styled('h4', {
+    textAlign: 'center',
+    fontSize: 18,
+    fontWeight: 600,
+    textTransform: 'uppercase',
+    marginBottom: 15,
+})
+
+export const ProjectThumb = styled('img', {
+    width: 380,
+    height: 200,
+    objectFit: 'cover',
+    borderRadius: 5,
+    marginBottom: 15,
+})
+
+export const ProjectDescription = styled('p', {
+    textAlign: 'center',
+    color: '$grey700',
+    fontSize: 14,
+    padding: '0 30px'
+})

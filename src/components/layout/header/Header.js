@@ -7,6 +7,7 @@ import SVGarrange from '../../../assets/svgs/arrangeCircle.svg';
 import { useNavigate } from 'react-router-dom';
 import { API } from '../../../services/api';
 import MobileMenu from './mobile/MobileMenu';
+import LogoAnitory from '../../../assets/images/LogoAnitory.png';
 
 function Header() {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ function Header() {
         justifyContent: 'space-between',
         '@tablet': { padding: '15px 20px', }
       }} >
-        <Logo>Anitory</Logo>
+        <Logo> Anitory </Logo>
 
         <Container css={{ display: 'block', '@mobile': { display: 'none' } }}>
           <NavBar navList={navBarList} />

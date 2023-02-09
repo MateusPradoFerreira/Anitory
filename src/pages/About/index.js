@@ -4,7 +4,14 @@ import BannerImg from "../../assets/images/black and white chainsaw man banner.j
 import { Button } from "../../components/generals/button/Buttom";
 import { Container } from "../../containers/Container";
 import { useNavigate } from "react-router-dom";
-import { Description, Heading, CreditsContainer, CreditsSection, CreditAnchor, CreditsHeading, Icon } from "./styles";
+import { Description, Heading, CreditsContainer, CreditsSection, CreditAnchor, CreditsHeading, Icon, ProjectsContainer, Project, ProjectTitle, ProjectThumb, ProjectDescription } from "./styles";
+import IMGpoketex from "../../assets/images/pj/poketex.png";
+import IMGbookscolection from "../../assets/images/pj/bookscolection.png";
+import IMGallinone from "../../assets/images/pj/allinone.png";
+import IMGgame from "../../assets/images/pj/game.png";
+import IMGfirewatchfanpage from "../../assets/images/pj/firewatchfanpage.png";
+import IMGpokedex from "../../assets/images/pj/pokedex.png";
+
 
 function About() {
     const navigate = useNavigate();
@@ -16,7 +23,7 @@ function About() {
                 <Description>
                     A website created by Mateus do Prado Ferreira, aimed solely and exclusively at React.js studies.
                     I do not claim any rights over the images and icons used.
-                    This project uses Jikan FREE API.
+                    This project uses <a href="https://jikan.moe/">Jikan</a> FREE API.
                     All credits will be listed below.
                 </Description>
                 <Container css={{ margin: '0 auto', width: 'fit-content' }}>
@@ -91,6 +98,39 @@ function About() {
                 </CreditsContainer>
 
                 <Heading>other projects</Heading>
+
+                <ProjectsContainer>
+                    <Project href="https://poketex.netlify.app/">
+                        <ProjectTitle>Poketex</ProjectTitle>
+                        <ProjectThumb src={IMGpoketex} alt="" />
+                        <ProjectDescription>Custom pokedex that uses the pokeapi to search for pokemons</ProjectDescription>
+                    </Project>
+                    <Project href="https://bookscolection.000webhostapp.com/index.php">
+                        <ProjectTitle>books colection</ProjectTitle>
+                        <ProjectThumb src={IMGbookscolection} alt="" />
+                        <ProjectDescription>website dedicated to the registration and exchange of books between users</ProjectDescription>
+                    </Project>
+                    <Project href="https://allinonewb.netlify.app/">
+                        <ProjectTitle>allinone</ProjectTitle>
+                        <ProjectThumb src={IMGallinone} alt="" />
+                        <ProjectDescription>Website that uses the DummyJSON api to simulate a complete marketplace </ProjectDescription>
+                    </Project>
+                    <Project href="https://mateusfightgame.netlify.app/">
+                        <ProjectTitle>fighting game</ProjectTitle>
+                        <ProjectThumb src={IMGgame} alt="" />
+                        <ProjectDescription>Custom pokedex that uses the pokeapi to search for pokemons</ProjectDescription>
+                    </Project>
+                    <Project href="https://firewatchfanpage.netlify.app/">
+                        <ProjectTitle>firewatch fanpage</ProjectTitle>
+                        <ProjectThumb src={IMGfirewatchfanpage} alt="" />
+                        <ProjectDescription>Custom pokedex that uses the pokeapi to search for pokemons</ProjectDescription>
+                    </Project>
+                    <Project href="https://www.figma.com/file/d0FiCtgs0LmPgccKRyYo0x/Pokedex?node-id=0%3A1&t=WkkHdTSOJuFrxxMO-0">
+                        <ProjectTitle>pokedex</ProjectTitle>
+                        <ProjectThumb src={IMGpokedex} alt="" />
+                        <ProjectDescription>Custom pokedex that uses the pokeapi to search for pokemons</ProjectDescription>
+                    </Project>
+                </ProjectsContainer>
             </Main>
         </>
     );

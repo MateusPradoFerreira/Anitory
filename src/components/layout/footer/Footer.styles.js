@@ -1,9 +1,14 @@
-import { css } from "../../../services/stitchesConfig";
+import { css, styled } from "../../../services/stitchesConfig";
 
 export const FooterRedAreaCSS = css({
-    backgroundColor: '$red300',
-    height: 120,
+    height: 180,
     marginTop: 50,
+    background: '#DC3535',
+    borderTop: '5px solid #FA6F65',
+
+    '@mobile': {
+        height: 'fit-content'
+    }
 })
 
 export const FooterBlackAreaCSS = css({
@@ -17,18 +22,52 @@ export const FooterBlackAreaCSS = css({
     }
 })
 
-export const FooterMalIMGCSS = css({
-    width: 140,
-    height: 31,
-    objectFit: 'cover',
-    filter: 'brightness(0) saturate(100%) invert(100%) sepia(2%) saturate(325%) hue-rotate(59deg) brightness(115%) contrast(100%)',
-})
-
 export const FooterTohruIMGCSS = css({
-    width: 227,
-    height: 224,
+    width: 291,
+    height: 288,
 
-    '@mobile': {
+    '@tablet': {
         display: 'none',
     }
+})
+
+export const FooterSection = styled('div', {
+    maxWidth: 300,
+})
+
+export const SectionTitle = styled('h4', {
+    marginBottom: 10,
+    fontWeight: 600,
+    fontSize: 18,
+    color: '#FFFFFF',
+})
+
+export const SectionContent = styled('div', {
+    fontWeight: 400,
+    fontSize: 12,
+    color: '#FFFFFF',
+    display: 'flex',
+    flexDirection: 'column',
+})
+
+export const SectionAnchor = styled('a', {
+    fontWeight: 400,
+    fontSize: 12,
+    color: '#FFFFFF',
+    textDecoration: 'none',
+})
+
+export const Icons = styled('div', {
+    display: 'flex',
+    gap: 10,
+    marginTop: 10,
+})
+
+export const Icon = styled('a', {
+    color: 'White',
+})
+
+export const IconCSS = css({
+    width: 24,
+    height: 24,
 })

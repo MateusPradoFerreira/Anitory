@@ -22,7 +22,7 @@ function IndividualAnimePath() {
         );
     }
 
-    if (isError) { return <Container> Error... </Container> }
+    if (isError || data?.status) { return <Container css={{ marginTop: 15 }}> We can't find this resource... </Container> }
 
     if (individualPath === '/videos') { return <PathVideos data={data} /> }
     if (individualPath === '/characters') { return <PathCharacters data={data} /> }

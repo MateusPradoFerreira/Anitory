@@ -3,7 +3,7 @@ import { SelectTrigger, SelectContent, SelectViewport, SelectItem, SelectContain
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 import useAnimeStore from '../../../store/useAnimeStore';
 
-function AnimesSelect() {
+function AnimesSelect2() {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState('');
     const setRating = useAnimeStore(state => state.setRating);
@@ -35,4 +35,4 @@ function AnimesSelect() {
     );
 }
 
-export default AnimesSelect;
+export default AnimesSelect2;

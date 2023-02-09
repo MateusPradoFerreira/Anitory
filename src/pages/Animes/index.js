@@ -10,19 +10,21 @@ import useAnimeQuery from "../../hooks/useAnimeQuery";
 import useAnimeStore from "../../store/useAnimeStore";
 import AnimesSearchResults from "./AnimesSearchResults/AnimesSearchResults";
 import AnimesSelect from "./AnimesSelect";
+import AnimesSelect2 from "./AnimesSelect2";
 
 function Animes() {
     const search = useAnimeStore(state => state.search);
     const searchPath = useAnimeStore(state => state.searchPath);
     const currentPage = useAnimeStore(state => state.currentPage);
     const rating = useAnimeStore(state => state.rating);
+    const orderBy = useAnimeStore(state => state.orderBy);
+    const sort = useAnimeStore(state => state.sort);
     const setIndividualPath = useAnimeStore(state => state.setIndividualPath);
     const setSearch = useAnimeStore(state => state.setSearch);
-    const clear = useAnimeStore(state => state.clear);
     const navigate = useNavigate();
     setIndividualPath('/videos');
 
-    const { data, isLoading, isError } = useAnimeQuery(`${searchPath}?&limit=24&page=${currentPage}&q=${search}&rating=${rating}`);
+    const { data, isLoading, isError } = useAnimeQuery(`${searchPath}?&limit=24&page=${currentPage}&q=${search}&rating=${rating}&order_by=${orderBy}&sort=${sort}`);
 
     const date = new Date();
     const year = date.getFullYear();
@@ -36,6 +38,7 @@ function Animes() {
             <Area name={'content'}>
                 <Container css={{ display: 'flex', justifyContent: 'space-between', gap: 5, '@tablet': { flexWrap: 'wrap' } }}>
                     <SearchBar css={{ marginBottom: 15, '@tablet': { marginBottom: 0, } }} onSubmit={setSearch} placeholder={'search for your favorite animes'} />
+                    <AnimesSelect2 />
                     <AnimesSelect />
                 </Container>
                 <Container css={{ display: 'flex', justifyContent: 'space-between', marginBottom: 15, }}>

@@ -1,10 +1,10 @@
 import { Main } from "../../components/layout/main/Main";
-import Banner from "../../components/generals/banner/Banner";
 import BannerImg from "../../assets/images/Banner.png";
 import Area from "../../containers/area/Area";
 import Sidebar from "../../components/layout/sidebar/Sidebar";
 import Content from "./content/Content";
 import useAnimeStore from "../../store/useAnimeStore";
+import { Banner } from "./styles";
 
 function Home() {
   const clear = useAnimeStore(state => state.clear);
@@ -12,7 +12,7 @@ function Home() {
 
   return (
     <>
-      <Banner noShadow img={BannerImg} css={{ '@mobile': { height: 150, } }} />
+      <Banner src={BannerImg} alt='Banner' />
       <Main home>
         <Area name={'content'}>
           <Content />
