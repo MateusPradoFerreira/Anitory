@@ -43,6 +43,8 @@ function IndividualAnime() {
   var genres = formatNameList(data?.genres);
   var themes = formatNameList(data?.themes);
 
+  document.title = `${data?.title} - Anitory`;
+
   return (
     <>
       <Hidder border boxShadow>

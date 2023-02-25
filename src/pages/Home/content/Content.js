@@ -14,7 +14,6 @@ function Content() {
     const navigate = useNavigate();
 
     const screenWidth = window.screen.width;
-    console.log(screenWidth)
 
     const { data: data01, isLoading: isLoading01, isError: isError01 } = useAnimeQuery('/seasons/now?limit=' + (screenWidth > 640 ? '4' : '3'));
     const { data: data02, isLoading: isLoading02, isError: isError02 } = useAnimeQuery('/seasons/upcoming?limit=' + (screenWidth > 640 ? '8' : '9'));

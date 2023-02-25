@@ -20,6 +20,8 @@ function Manga() {
 
     const { data, isLoading, isError } = useAnimeQuery(`${searchPath}?&limit=24&page=${currentPage}&q=${search}`);
 
+    document.title = `${search === '' ? "Explore" : search} - Anitory`;
+
     const date = new Date();
     const year = date.getFullYear();
 

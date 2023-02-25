@@ -4,11 +4,15 @@ import Area from "../../containers/area/Area";
 import Sidebar from "../../components/layout/sidebar/Sidebar";
 import Content from "./content/Content";
 import useAnimeStore from "../../store/useAnimeStore";
+import useMangaStore from "../../store/useAnimeStore";
 import { Banner } from "./styles";
 
 function Home() {
-  const clear = useAnimeStore(state => state.clear);
-  clear();
+  document.title = "Anitory";
+  const clear1 = useAnimeStore(state => state.clear);
+  const clear2 = useMangaStore(state => state.clear);
+  clear1();
+  clear2();
 
   return (
     <>

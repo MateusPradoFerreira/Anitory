@@ -26,6 +26,8 @@ function Animes() {
 
     const { data, isLoading, isError } = useAnimeQuery(`${searchPath}?&limit=24&page=${currentPage}&q=${search}&rating=${rating}&order_by=${orderBy}&sort=${sort}`);
 
+    document.title = `${search === '' ? "Explore" : search} - Anitory`;
+
     const date = new Date();
     const year = date.getFullYear();
 

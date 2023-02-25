@@ -11,10 +11,16 @@ import IMGallinone from "../../assets/images/pj/allinone.png";
 import IMGgame from "../../assets/images/pj/game.png";
 import IMGfirewatchfanpage from "../../assets/images/pj/firewatchfanpage.png";
 import IMGpokedex from "../../assets/images/pj/pokedex.png";
-
+import useAnimeStore from "../../store/useAnimeStore";
+import useMangaStore from "../../store/useAnimeStore";
 
 function About() {
+    document.title = "About - Anitory";
     const navigate = useNavigate();
+    const clear1 = useAnimeStore(state => state.clear);
+    const clear2 = useMangaStore(state => state.clear);
+    clear1();
+    clear2();
 
     return (
         <>
